@@ -1,0 +1,140 @@
+---
+import { site } from '@/data/site';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { getDefaultLanguage, getTranslations } from '@/i18n';
+
+const lang = getDefaultLanguage();
+const t = getTranslations(lang);
+
+const navItems = [
+  { href: '/', label: t.nav.home },
+  { href: '/cv', label: t.nav.about },
+  { href: '/projects', label: t.nav.work },
+  { href: '/blog', label: t.nav.blog },
+  { href: '/uses', label: t.nav.more },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  class="fixed top-2 left-1/2 z-50 w-[calc(100%-16px)] max-w-[92vw] sm:max-w-none sm:w-auto -translate-x-1/2 rounded-full border border-white/10 bg-white/[0.05] px-3 sm:px-6 py-2 sm:py-3 backdrop-blur-md"
+  role="navigation"
+  aria-label="Main navigation"
+>
+  <div class="flex items-center justify-between gap-2 sm:gap-4 md:gap-6">
+    <!-- Desktop Menu -->
+    <ul class="hidden items-center gap-1 md:flex" role="list">
+      {navItems.map((item) => (
+        <li role="listitem">
+          <a
+            href={item.href}
+            class={`relative rounded-full px-3 lg:px-4 py-2 text-sm font-medium transition-colors ${
+              currentPath === item.href
+                ? 'text-light-text'
+                : 'text-light-muted hover:text-light-text'
+            }`}
+          >
+            {item.label}
+            {currentPath === item.href && (
+              <span
+                class="absolute inset-0 rounded-full bg-gradient-to-r from-accent-from/20 to-accent-to/20"
+                aria-hidden="true"
+              />
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden text-light-text min-w-[44px] min-h-[44px] flex items-center justify-center -m-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+
+    <!-- Language Switcher -->
+    <div class="flex-shrink-0">
+      <LanguageSwitcher client:load />
+    </div>
+
+    <!-- CTA Button -->
+    <a
+      href="/contact"
+      class="hidden md:block rounded-full bg-gradient-to-r from-accent-from to-accent-to px-3 lg:px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 whitespace-nowrap"
+    >
+      {t.nav.contact}
+    </a>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="absolute top-full left-0 right-0 mt-2 hidden rounded-2xl border border-white/10 bg-dark-bg/95 backdrop-blur-md p-4 md:hidden"
+    role="menu"
+  >
+    <ul class="flex flex-col gap-2" role="list">
+      {navItems.map((item) => (
+        <li role="listitem">
+          <a
+            href={item.href}
+            class={`block rounded-lg px-4 py-3 text-sm min-h-[44px] flex items-center transition-colors ${
+              currentPath === item.href
+                ? 'bg-accent-from/20 text-light-text font-semibold'
+                : 'text-light-muted hover:bg-white/[0.05] hover:text-light-text'
+            }`}
+            role="menuitem"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href="/contact"
+          class="mt-2 block rounded-lg bg-gradient-to-r from-accent-from to-accent-to px-4 py-3 min-h-[44px] flex items-center justify-center text-center text-sm font-semibold text-white"
+          role="menuitem"
+        >
+          {t.nav.contact}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+
+  if (button && menu) {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!isExpanded));
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>
+
+<style>
+  nav {
+    padding-top: env(safe-area-inset-top);
+  }
+</style>

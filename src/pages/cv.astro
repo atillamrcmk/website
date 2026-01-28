@@ -1,0 +1,272 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Badge from '@/components/Badge.astro';
+import { Image } from 'astro:assets';
+import { getDefaultLanguage, getTranslations } from '@/i18n';
+import AboutSkills from '@/components/sections/AboutSkills';
+import cv from '@/assets/Atilla-Mercimek-CV.pdf';
+import foto from '@/assets/foto.jpg';
+import { selectedProjects } from '@/data/projects';
+
+const lang = getDefaultLanguage();
+const t = getTranslations(lang);
+
+const skills = lang === 'tr' ? {
+  [t.cv.skills.categories.programmingLanguages]: ['C', 'C++', 'C#', 'Dart', 'Python', 'JavaScript'],
+  [t.cv.skills.categories.mobileDevelopment]: ['Flutter', 'Firebase / FCM', 'Isar'],
+  [t.cv.skills.categories.backendTools]: ['.NET', 'WinForms', 'Node.js', 'REST APIs', 'SQL'],
+  [t.cv.skills.categories.other]: ['OpenCV', 'Machine Learning', 'WebRTC', 'Git'],
+} : {
+  'Programming Languages': ['C', 'C++', 'C#', 'Dart', 'Python', 'JavaScript'],
+  'Mobile Development': ['Flutter', 'Firebase / FCM', 'Isar'],
+  'Backend & Tools': ['.NET', 'WinForms', 'Node.js', 'REST APIs', 'SQL'],
+  'Other': ['OpenCV', 'Machine Learning', 'WebRTC', 'Git'],
+};
+
+const experience = lang === 'tr' ? [
+  {
+    year: 'Şub 2024 — Devam Ediyor',
+    role: t.cv.experience.entries.correctionsOfficer.role,
+    company: 'Adalet Bakanlığı',
+    type: t.cv.experience.entries.correctionsOfficer.type,
+    location: t.cv.experience.entries.correctionsOfficer.location,
+    description: t.cv.experience.entries.correctionsOfficer.description,
+  },
+  {
+    year: 'Tem 2024 — Eki 2024',
+    role: t.cv.experience.entries.softwareEngineeringIntern.role,
+    company: 'MISSoft Digital Transformation',
+    type: t.cv.experience.entries.softwareEngineeringIntern.type,
+    location: t.cv.experience.entries.softwareEngineeringIntern.location,
+    description: t.cv.experience.entries.softwareEngineeringIntern.description,
+    tags: ['Dart', 'Flutter', 'Mobil Uygulama Geliştirme'],
+  },
+  {
+    year: '2023 — Devam Ediyor',
+    role: t.cv.experience.entries.flutterDeveloper.role,
+    company: 'Serbest',
+    type: t.cv.experience.entries.flutterDeveloper.type,
+    location: t.cv.experience.entries.flutterDeveloper.location,
+    description: t.cv.experience.entries.flutterDeveloper.description,
+    tags: ['Flutter', 'Dart', 'Firebase', 'FCM', 'Node.js', 'Express'],
+  },
+] : [
+  {
+    year: 'Feb 2024 — Current',
+    role: 'Corrections Officer',
+    company: 'Adalet Bakanlığı',
+    type: 'Contract',
+    location: 'Erzurum, Turkey',
+    description: [
+      'Identifying and evaluating automation opportunities in operational processes',
+      'Developing proof-of-concept (PoC) solutions for transition to technical units',
+      'Taking an active role in software-focused tasks and process improvements',
+      'Creating efficiency-enhancing solutions for central control systems',
+    ],
+  },
+  {
+    year: 'Jul 2024 — Oct 2024',
+    role: 'Software Engineering Intern',
+    company: 'MISSoft Digital Transformation',
+    type: 'Full-time',
+    location: 'Erzurum, Turkey',
+    description: [
+      'Actively participating in software development projects in a collaborative team environment',
+      'Working closely with senior developers, participating in code reviews, and applying Agile methodologies',
+      'Taking responsibility for individual tasks, ensuring timely and high-quality deliverables',
+      'Gaining practical experience in software engineering workflows, problem-solving, and effective teamwork',
+    ],
+    tags: ['Dart', 'Flutter', 'Mobile App Development'],
+  },
+  {
+    year: '2023 — Current',
+    role: 'Flutter Developer',
+    company: 'Freelance',
+    type: 'Freelance',
+    location: 'Remote',
+    description: [
+      'Kangaroom: Teacher-parent communication platform - developing dual application architecture, FCM push notifications, and real-time messaging flow',
+      'Architectural design and development for scalable mobile applications',
+      'Working seamlessly with RESTful API integrations and backend services',
+      'Focusing on performance optimization and user experience improvements',
+    ],
+    tags: ['Flutter', 'Dart', 'Firebase', 'FCM', 'Node.js', 'Express'],
+  },
+];
+
+const education = [
+  {
+    year: t.cv.education.graduated,
+    degree: t.cv.education.degree,
+    institution: t.cv.education.institution,
+  },
+];
+---
+
+<BaseLayout
+  title={`${t.cv.title} - Atilla Mercimek`}
+  description={t.site.description}
+>
+  <Section class="pt-24 sm:pt-28 md:pt-32">
+    <!-- Hero -->
+    <div class="mb-10 sm:mb-12 lg:mb-16 scroll-reveal">
+      <div class="mb-6 sm:mb-8 flex flex-col items-center gap-4 sm:gap-6 md:flex-row md:items-start">
+        <div class="flex-shrink-0">
+          <Image
+            src={foto}
+            alt="Atilla Mercimek"
+            class="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover border-2 border-white/20 md:h-40 md:w-40"
+            width={160}
+            height={160}
+            loading="eager"
+          />
+        </div>
+        <div class="flex-1 text-center md:text-left">
+          <h1 class="heading-1 mb-4 sm:mb-6 text-light-text">
+            {t.cv.title}
+          </h1>
+          <p class="body-large max-w-3xl mx-auto md:mx-0 text-light-muted">
+            {t.site.description}
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 sm:mt-8 flex justify-center md:justify-start">
+        <a
+          href={cv}
+          target="_blank"
+          rel="noopener"
+          class="btn-primary inline-flex items-center gap-2"
+        >
+          {t.cv.downloadCV}
+          <svg
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- About Skills (Recruiting-friendly) -->
+    <AboutSkills lang={lang} projects={selectedProjects} />
+
+    <!-- Skills Categories -->
+    <div class="mb-10 sm:mb-12 lg:mb-16 scroll-reveal">
+      <h2 class="heading-2 mb-6 sm:mb-8 text-light-text">{t.cv.skills.title}</h2>
+      <div class="grid gap-4 sm:gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {Object.entries(skills).map(([category, items]) => (
+          <div class="card">
+            <h3 class="heading-4 mb-3 sm:mb-4 text-light-text">{category}</h3>
+            <div class="flex flex-wrap gap-2">
+              {items.map((skill) => (
+                <Badge text={skill} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="mb-10 sm:mb-12 lg:mb-16 scroll-reveal">
+      <h2 class="heading-2 mb-6 sm:mb-8 text-light-text">
+        {t.cv.experience.title}
+      </h2>
+      <div class="max-w-3xl space-y-6 sm:space-y-8">
+        {experience.map((exp) => (
+          <div class="flex gap-3 sm:gap-6">
+            <div class="flex-shrink-0 min-w-[80px] sm:min-w-[100px]">
+              <span class="body-small font-semibold text-accent-from">{exp.year}</span>
+            </div>
+            <div class="flex-1 border-l border-dark-border pl-3 sm:pl-6">
+              <h3 class="heading-4 mb-1 sm:mb-2 text-light-text">{exp.role}</h3>
+              <div class="mb-2 flex flex-wrap items-center gap-2 text-xs sm:text-sm">
+                <p class="font-medium text-accent-from">{exp.company}</p>
+                {exp.type && (
+                  <>
+                    <span class="text-light-muted">•</span>
+                    <span class="text-sm text-light-muted">{exp.type}</span>
+                  </>
+                )}
+                {exp.location && (
+                  <>
+                    <span class="text-light-muted">•</span>
+                    <span class="text-sm text-light-muted">{exp.location}</span>
+                  </>
+                )}
+              </div>
+              {Array.isArray(exp.description) ? (
+                <ul class="mb-3 space-y-1 body-base text-light-muted">
+                  {exp.description.map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span class="mt-1.5 flex-shrink-0 text-accent-from">▸</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="mb-3 body-base text-light-muted">{exp.description}</p>
+              )}
+              {exp.tags && (
+                <div class="mt-3 flex flex-wrap gap-2">
+                  {exp.tags.map((tag) => (
+                    <Badge text={tag} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="mb-10 sm:mb-12 lg:mb-16 scroll-reveal">
+      <h2 class="heading-2 mb-6 sm:mb-8 text-light-text">{t.cv.education.title}</h2>
+      <div class="max-w-3xl space-y-6">
+        {education.map((edu) => (
+          <div class="flex gap-3 sm:gap-6">
+            <div class="flex-shrink-0 min-w-[80px] sm:min-w-[100px]">
+              <span class="body-small font-semibold text-accent-from">{edu.year}</span>
+            </div>
+            <div class="flex-1 border-l border-dark-border pl-3 sm:pl-6">
+              <h3 class="heading-4 mb-1 sm:mb-2 text-light-text">
+                {edu.degree}
+              </h3>
+              <p class="body-base text-light-muted">{edu.institution}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="scroll-reveal">
+      <div class="card text-center">
+        <h3 class="heading-3 mb-3 sm:mb-4 text-light-text">
+          {t.cv.cta.title}
+        </h3>
+        <p class="body-base mb-4 sm:mb-6 text-light-muted">
+          {t.cv.cta.description}
+        </p>
+        <a
+          href="/contact"
+          class="btn-primary inline-flex items-center gap-2"
+        >
+          {t.cv.cta.button}
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+

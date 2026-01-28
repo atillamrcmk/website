@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-dark-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-dark-bg text-light-text antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    padding-top: env(safe-area-inset-top);
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Subtle grid overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.3;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent-from to-accent-to bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    @apply border border-transparent bg-gradient-to-r from-accent-from to-accent-to bg-clip-border;
+  }
+
+  .card {
+    @apply rounded-[24px] border border-white/10 p-4 sm:p-6 backdrop-blur-md transition-all duration-300;
+    background-color: rgba(255, 255, 255, 0.04);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .card h3 {
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .card-hover {
+    @apply hover:border-accent-from/50 hover:shadow-lg hover:shadow-accent-from/10 hover:-translate-y-[2px];
+  }
+
+  .section-padding {
+    @apply py-10 px-4 sm:py-12 sm:px-6 lg:py-16 lg:px-8;
+  }
+
+  .container-custom {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Responsive Typography Scale */
+  .heading-1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  .heading-2 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+  }
+
+  .heading-3 {
+    @apply text-xl sm:text-2xl md:text-3xl font-bold leading-snug;
+  }
+
+  .heading-4 {
+    @apply text-lg sm:text-xl md:text-2xl font-semibold leading-snug;
+  }
+
+  .body-large {
+    @apply text-base sm:text-lg leading-relaxed;
+  }
+
+  .body-base {
+    @apply text-sm sm:text-base leading-relaxed;
+  }
+
+  .body-small {
+    @apply text-xs sm:text-sm leading-relaxed;
+  }
+
+  /* Touch-friendly buttons */
+  .btn {
+    @apply min-h-[44px] px-4 py-2.5 sm:px-6 sm:py-3 rounded-[20px] font-semibold transition-all;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-accent-from to-accent-to text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-from focus:ring-offset-2 focus:ring-offset-dark-bg;
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/10 bg-white/[0.05] text-light-text backdrop-blur-md hover:border-accent-from/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent-from focus:ring-offset-2 focus:ring-offset-dark-bg;
+  }
+}
+
+@layer utilities {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

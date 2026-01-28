@@ -1,0 +1,43 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+const duplicatedItems = [...items, ...items];
+---
+
+<div class="overflow-hidden border-y border-dark-border py-4">
+  <div
+    class="flex gap-8"
+    style="animation: marquee 30s linear infinite;"
+    aria-hidden="true"
+  >
+    {duplicatedItems.map((item) => (
+      <span class="whitespace-nowrap text-sm font-medium text-light-muted">
+        {item}
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    div[style*='animation'] {
+      animation: none !important;
+    }
+  }
+</style>
+
+
+
+

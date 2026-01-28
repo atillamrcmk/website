@@ -1,0 +1,56 @@
+[
+  {
+    "id": "flutter",
+    "label": "Flutter",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+  },
+  {
+    "id": "dart",
+    "label": "Dart",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
+  },
+  {
+    "id": "firebase",
+    "label": "Firebase",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+  },
+  {
+    "id": "android",
+    "label": "Android",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg"
+  },
+  {
+    "id": "ios",
+    "label": "iOS",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+  },
+  {
+    "id": "nodejs",
+    "label": "Node.js",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+  },
+  {
+    "id": "postgresql",
+    "label": "PostgreSQL",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+  },
+  {
+    "id": "docker",
+    "label": "Docker",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+  },
+  {
+    "id": "github",
+    "label": "GitHub",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+  },
+  {
+    "id": "aws",
+    "label": "AWS",
+    "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg"
+  }
+]
+
+
+
+

@@ -1,0 +1,217 @@
+---
+title: 'Firebase Performance Tips'
+titleTr: 'Firebase Performans İpuçları'
+description: 'Optimizing Firebase usage for better performance and cost efficiency in mobile apps'
+descriptionTr: 'Mobil uygulamalarda daha iyi performans ve maliyet verimliliği için Firebase kullanımını optimize etme'
+pubDate: 2024-01-10
+tags: ['Firebase', 'Performance', 'Mobile Development']
+tagsTr: ['Firebase', 'Performans', 'Mobil Geliştirme']
+readTime: 4
+---
+
+<Lang lang="en">
+    Firebase is a powerful backend solution, but without proper optimization, it can lead to performance issues and unexpected costs. Here are some tips I've learned from building production apps.
+
+    ## Firestore Optimization
+
+    ### Use Indexes Wisely
+
+    Create composite indexes for complex queries. Firestore will prompt you, but proactively creating them improves query performance.
+
+    ### Limit Query Results
+
+    Always use `.limit()` to restrict the number of documents returned:
+
+    ```dart
+    firestore
+      .collection('products')
+      .where('category', isEqualTo: 'electronics')
+      .limit(20)
+      .get();
+    ```
+
+    ### Pagination
+
+    Implement pagination for large datasets using `startAfter()`:
+
+    ```dart
+    final lastDocument = snapshot.docs.last;
+    final nextPage = firestore
+      .collection('products')
+      .startAfterDocument(lastDocument)
+      .limit(20)
+      .get();
+    ```
+
+    ## Real-time Listeners
+
+    ### Unsubscribe Properly
+
+    Always cancel listeners when not needed:
+
+    ```dart
+    StreamSubscription? _subscription;
+
+    @override
+    void dispose() {
+      _subscription?.cancel();
+      super.dispose();
+    }
+    ```
+
+    ### Use Snapshots Efficiently
+
+    Prefer `snapshots()` over `get()` for real-time updates, but only when necessary. Each listener consumes resources.
+
+    ## Caching Strategy
+
+    ### Enable Offline Persistence
+
+    For better offline experience and reduced reads:
+
+    ```dart
+    FirebaseFirestore.instance.enablePersistence();
+    ```
+
+    ### Cache Aggressively
+
+    Cache frequently accessed data locally using packages like Hive or SharedPreferences to reduce Firestore reads.
+
+    ## Security Rules
+
+    Optimize security rules to prevent unnecessary reads:
+
+    ```javascript
+    match /products/{productId} {
+      allow read: if request.auth != null && 
+        resource.data.published == true;
+    }
+    ```
+
+    ## Cost Optimization
+
+    ### Batch Operations
+
+    Use batch writes to reduce write operations:
+
+    ```dart
+    final batch = firestore.batch();
+    batch.set(ref1, data1);
+    batch.set(ref2, data2);
+    await batch.commit();
+    ```
+
+    ### Monitor Usage
+
+    Regularly check Firebase Console for usage patterns and optimize accordingly.
+
+    ## Conclusion
+
+    Firebase is powerful, but requires careful optimization. Focus on efficient queries, proper caching, and monitoring usage to maintain performance and control costs.
+
+    Have you encountered Firebase performance issues? What solutions worked for you?
+  </Lang>
+  <Lang lang="tr">
+    Firebase güçlü bir backend çözümüdür, ancak uygun optimizasyon olmadan performans sorunlarına ve beklenmedik maliyetlere yol açabilir. Production uygulamaları geliştirirken öğrendiğim bazı ipuçları:
+
+    ## Firestore Optimizasyonu
+
+    ### İndeksleri Akıllıca Kullanın
+
+    Karmaşık sorgular için composite index'ler oluşturun. Firestore sizi uyaracaktır, ancak proaktif olarak oluşturmak sorgu performansını artırır.
+
+    ### Sorgu Sonuçlarını Sınırlayın
+
+    Döndürülen belge sayısını sınırlamak için her zaman `.limit()` kullanın:
+
+    ```dart
+    firestore
+      .collection('products')
+      .where('category', isEqualTo: 'electronics')
+      .limit(20)
+      .get();
+    ```
+
+    ### Sayfalama
+
+    Büyük veri setleri için `startAfter()` kullanarak sayfalama uygulayın:
+
+    ```dart
+    final lastDocument = snapshot.docs.last;
+    final nextPage = firestore
+      .collection('products')
+      .startAfterDocument(lastDocument)
+      .limit(20)
+      .get();
+    ```
+
+    ## Gerçek Zamanlı Dinleyiciler
+
+    ### Düzgün Abonelikten Çıkın
+
+    Gerekmeyen dinleyicileri her zaman iptal edin:
+
+    ```dart
+    StreamSubscription? _subscription;
+
+    @override
+    void dispose() {
+      _subscription?.cancel();
+      super.dispose();
+    }
+    ```
+
+    ### Snapshot'ları Verimli Kullanın
+
+    Gerçek zamanlı güncellemeler için `get()` yerine `snapshots()` tercih edin, ancak yalnızca gerektiğinde. Her dinleyici kaynak tüketir.
+
+    ## Önbellekleme Stratejisi
+
+    ### Çevrimdışı Kalıcılığı Etkinleştirin
+
+    Daha iyi çevrimdışı deneyim ve azaltılmış okumalar için:
+
+    ```dart
+    FirebaseFirestore.instance.enablePersistence();
+    ```
+
+    ### Agresif Önbellekleme
+
+    Firestore okumalarını azaltmak için Hive veya SharedPreferences gibi paketler kullanarak sık erişilen verileri yerel olarak önbelleğe alın.
+
+    ## Güvenlik Kuralları
+
+    Gereksiz okumaları önlemek için güvenlik kurallarını optimize edin:
+
+    ```javascript
+    match /products/{productId} {
+      allow read: if request.auth != null && 
+        resource.data.published == true;
+    }
+    ```
+
+    ## Maliyet Optimizasyonu
+
+    ### Toplu İşlemler
+
+    Yazma işlemlerini azaltmak için batch yazıları kullanın:
+
+    ```dart
+    final batch = firestore.batch();
+    batch.set(ref1, data1);
+    batch.set(ref2, data2);
+    await batch.commit();
+    ```
+
+    ### Kullanımı İzleyin
+
+    Kullanım kalıplarını görmek için Firebase Console'u düzenli olarak kontrol edin ve buna göre optimize edin.
+
+    ## Sonuç
+
+    Firebase güçlüdür, ancak dikkatli optimizasyon gerektirir. Performansı korumak ve maliyetleri kontrol etmek için verimli sorgulara, uygun önbellekleme ve kullanım izlemeye odaklanın.
+
+    Firebase performans sorunlarıyla karşılaştınız mı? Hangi çözümler sizin için işe yaradı?
+  </Lang>
+
+

@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string;
+  span?: 'full' | 'half' | 'third' | 'two-thirds' | 'seven' | 'eight';
+}
+
+const { class: className = '', span = 'full' } = Astro.props;
+
+const spanClasses = {
+  full: 'lg:col-span-12',
+  half: 'lg:col-span-6',
+  third: 'lg:col-span-4',
+  'two-thirds': 'lg:col-span-8',
+  'seven': 'lg:col-span-7',
+  'eight': 'lg:col-span-8',
+};
+---
+
+<div class={`card card-hover scroll-reveal ${spanClasses[span]} ${className}`}>
+  <slot />
+</div>
+

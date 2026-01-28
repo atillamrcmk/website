@@ -1,0 +1,22 @@
+---
+interface Props {
+  text: string;
+  variant?: 'default' | 'gradient';
+}
+
+const { text, variant = 'default' } = Astro.props;
+---
+
+<span
+  class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
+    variant === 'gradient'
+      ? 'bg-gradient-to-r from-accent-from to-accent-to text-white'
+      : 'bg-dark-surface border border-dark-border text-light-text'
+  }`}
+>
+  {text}
+</span>
+
+
+
+

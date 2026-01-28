@@ -1,0 +1,72 @@
+---
+title: 'E-Commerce Mobile App'
+tagline: 'High-performance Flutter app with real-time inventory and payment integration'
+description: 'A comprehensive e-commerce solution built with Flutter, featuring real-time inventory management, secure payment processing, and offline support.'
+category: 'Flutter'
+date: 2024-01-15
+role: 'Lead Developer'
+platform: 'iOS, Android'
+technologies: ['Flutter', 'Dart', 'Firebase', 'Stripe', 'Riverpod', 'Hive']
+github: 'https://github.com/atilla/ecommerce-app'
+demo: 'https://ecommerce-demo.app'
+---
+
+## Problem
+
+Building a scalable e-commerce mobile application that handles real-time inventory updates, secure payments, and works seamlessly offline was the main challenge. The app needed to support thousands of concurrent users while maintaining fast performance.
+
+## Solution Approach
+
+I architected the application using Clean Architecture principles with Riverpod for state management. The app features:
+
+- **Real-time synchronization** using Firebase Firestore
+- **Offline-first architecture** with local caching using Hive
+- **Secure payment processing** integrated with Stripe
+- **Optimistic UI updates** for better user experience
+
+## Architecture
+
+The app follows a layered architecture:
+
+- **Presentation Layer**: Flutter widgets with Riverpod providers
+- **Domain Layer**: Business logic and use cases
+- **Data Layer**: Repository pattern with Firebase and local storage
+- **Infrastructure**: Network, caching, and dependency injection
+
+Key architectural decisions:
+
+- Separation of concerns with clear boundaries
+- Dependency injection for testability
+- Repository pattern for data abstraction
+- State management with Riverpod for reactive updates
+
+## Technologies Used
+
+The project leverages modern Flutter ecosystem:
+
+- **Flutter 3.x** for cross-platform development
+- **Riverpod** for state management and dependency injection
+- **Firebase** for backend services (Auth, Firestore, Storage)
+- **Stripe** for payment processing
+- **Hive** for local database and caching
+- **Freezed** for immutable data classes
+
+## Results & Learnings
+
+The app successfully handles:
+
+- 10,000+ daily active users
+- Real-time inventory updates across all clients
+- Offline functionality with seamless sync
+- Secure payment processing with PCI compliance
+
+Key learnings:
+
+- Clean Architecture significantly improves maintainability
+- Offline-first approach enhances user experience
+- Proper state management prevents UI inconsistencies
+- Performance optimization is crucial for e-commerce apps
+
+
+
+

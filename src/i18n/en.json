@@ -1,0 +1,369 @@
+{
+  "site": {
+    "name": "Atilla Mercimek",
+    "role": "Software Engineer • Mobile & AI Developer",
+    "tagline": "Flutter, C#/.NET, Python/OpenCV, Mobile & AI Development",
+    "description": "Atatürk University Software Engineering graduate. I develop mobile applications (Flutter), desktop applications (C#/.NET), and AI projects (Python/OpenCV). I value writing clean, readable, and maintainable code.",
+    "availability": "Available for Work"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "work": "Work",
+    "blog": "Blog",
+    "more": "More",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "ctaProjects": "Projects",
+      "ctaCV": "Download CV"
+    },
+    "cards": {
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "I bring your projects to life on time and with quality through open communication and clear delivery processes."
+      },
+      "passionate": {
+        "title": "Passionate about cutting-edge technologies"
+      },
+      "timezone": {
+        "title": "Time zone communications",
+        "tr": "GMT+3: 09:00–18:00",
+        "eu": "GMT+1: 09:00–17:00",
+        "us": "GMT-5: 09:00–17:00",
+        "popover": {
+          "available": "Available"
+        },
+        "remote": "REMOTE"
+      },
+      "workTogether": {
+        "title": "Let's work together",
+        "description": "I'm ready for your projects. Let's do great things together.",
+        "cta": "Get in Touch"
+      },
+      "browserMock": {
+        "placeholder": "Product Showcase"
+      }
+    },
+    "skills": {
+      "title": "MY SKILLS",
+      "subtitle": "Command Center",
+      "hint": "Select a skill area to view details."
+    },
+    "skillsCommandCenter": {
+      "leftTitle": "Skill Areas",
+      "identityEyebrow": "Identity",
+      "identityTitle": "Product-focused Mobile & AI Engineer",
+      "identitySubtitle": "I design and ship scalable, production-ready systems.",
+      "primaryCta": "View Projects",
+      "detailTitle": "Detail Zone",
+      "detailHint": "Select a skill area to view details.",
+      "usedIn": "Used in projects",
+      "tech": "Tech chips",
+      "close": "Close",
+      "noProjects": "I use this in practice across my projects.",
+      "sheetTitle": "Details"
+    },
+    "selectedWork": {
+      "title": "Selected Work",
+      "subtitle": "A showcase of my recent projects",
+      "viewCaseStudy": "View case study",
+      "seeMore": "See more projects"
+    }
+  },
+  "cv": {
+    "title": "About Me",
+    "downloadCV": "Download CV (PDF)",
+    "skills": {
+      "title": "Skills by Category",
+      "swarmTitle": "MY SKILLS",
+      "swarmSubtitle": "My Tech Stack",
+      "swarmHint": "Move your cursor to explore my tech stack",
+      "categories": {
+        "programmingLanguages": "Programming Languages",
+        "mobileDevelopment": "Mobile Development",
+        "backendTools": "Backend & Tools",
+        "other": "Other"
+      }
+    },
+    "experience": {
+      "title": "Experience",
+      "entries": {
+        "correctionsOfficer": {
+          "role": "Corrections Officer",
+          "type": "Contract",
+          "location": "Erzurum, Turkey",
+          "description": [
+            "Identifying and evaluating automation opportunities in operational processes",
+            "Developing proof-of-concept (PoC) solutions for transition to technical units",
+            "Taking an active role in software-focused tasks and process improvements",
+            "Creating efficiency-enhancing solutions for central control systems"
+          ]
+        },
+        "softwareEngineeringIntern": {
+          "role": "Software Engineering Intern",
+          "type": "Full-time",
+          "location": "Erzurum, Turkey",
+          "description": [
+            "Actively participating in software development projects in a collaborative team environment",
+            "Working closely with senior developers, participating in code reviews, and applying Agile methodologies",
+            "Taking responsibility for individual tasks, ensuring timely and high-quality deliverables",
+            "Gaining practical experience in software engineering workflows, problem-solving, and effective teamwork"
+          ]
+        },
+        "flutterDeveloper": {
+          "role": "Flutter Developer",
+          "type": "Freelance",
+          "location": "Remote",
+          "description": [
+            "Kangaroom: Teacher-parent communication platform - developing dual application architecture, FCM push notifications, and real-time messaging flow",
+            "Architectural design and development for scalable mobile applications",
+            "Working seamlessly with RESTful API integrations and backend services",
+            "Focusing on performance optimization and user experience improvements"
+          ]
+        }
+      }
+    },
+    "education": {
+      "title": "Education",
+      "graduated": "Graduated",
+      "degree": "Software Engineering",
+      "institution": "Atatürk University"
+    },
+    "cta": {
+      "title": "Let's Work Together",
+      "description": "Interested in collaborating? Feel free to reach out.",
+      "button": "Contact Me"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A collection of my mobile development projects",
+    "all": "All",
+    "viewCaseStudy": "View case study",
+    "viewOnGitHub": "View on GitHub",
+    "noProjects": "No projects found in this category",
+    "categories": {
+      "all": "All",
+      "flutter": "Flutter",
+      "android": "Android",
+      "ios": "iOS",
+      "backend": "Backend",
+      "desktop": "Desktop",
+      "web": "Web"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts on mobile development, Flutter, and technology",
+    "minRead": "min read",
+    "updated": "Updated",
+    "backToBlog": "Back to Blog",
+    "discussPost": "Discuss this post",
+    "noPosts": "No blog posts yet. Check back soon!",
+    "readMore": "Read More",
+    "published": "Published"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind or want to collaborate? I'd love to hear from you.",
+    "form": {
+      "title": "Send a Message",
+      "note": "The form automatically transfers your data to your email client. Click the button below to send your message.",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "sendViaEmail": "Send via Email",
+      "clickToOpen": "Click to open your email client",
+      "copyEmail": "Copy Email Address",
+      "emailCopied": "Email address copied!",
+      "fillForm": "Please fill in all fields",
+      "invalidEmail": "Please enter a valid email address"
+    },
+    "social": {
+      "title": "Or reach out via",
+      "github": {
+        "name": "GitHub",
+        "description": "Check out my code and open source contributions"
+      },
+      "linkedin": {
+        "name": "LinkedIn",
+        "description": "Connect with me professionally"
+      },
+      "email": {
+        "name": "Email",
+        "description": "Send me an email directly"
+      }
+    }
+  },
+  "uses": {
+    "title": "My Toolkit",
+    "subtitle": "The tools I use daily + how I use them to ship.",
+    "hero": {
+      "title": "My Toolkit",
+      "subtitle": "The tools I use in my daily workflow—and how I turn them into a repeatable build process. Not just a list: process, standards, and outcomes.",
+      "badge": "Production-ready workflow"
+    },
+    "howIbuild": {
+      "title": "How I build",
+      "activeLabel": "Active step",
+      "steps": {
+        "plan": {
+          "title": "Design & Planning",
+          "description": "I start by clarifying scope: screen flow, data model, and delivery criteria. Notes stay short; decisions stay traceable."
+        },
+        "build": {
+          "title": "Implementation",
+          "description": "I build with UI/UX accuracy, performance, and maintainability in mind—shipping reusable pieces instead of one-off code."
+        },
+        "api": {
+          "title": "Backend & API",
+          "description": "I define clear contracts (request/response), auth, and error scenarios. The goal is a simple, testable service layer."
+        },
+        "ai": {
+          "title": "AI / Automation",
+          "description": "If computer vision or automation is needed, I validate with small PoCs first—then integrate behind clear API boundaries."
+        },
+        "deploy": {
+          "title": "Deploy",
+          "description": "I ship to production with a pragmatic setup: basic server config, reverse proxy, and TLS. Simple to operate, easy to maintain."
+        },
+        "quality": {
+          "title": "Monitoring & Quality",
+          "description": "I make failures visible with meaningful logging and error handling. Changes stay small, reviewable, and measurable via feedback."
+        }
+      }
+    },
+    "standards": {
+      "title": "Engineering Standards",
+      "items": {
+        "vcs": {
+          "title": "Version control strategy",
+          "description": "A branch/PR flow keeps changes small and readable, with easy rollback when needed."
+        },
+        "clean": {
+          "title": "Clean code & modular architecture",
+          "description": "Clear boundaries, testable modules, and simple responsibility mapping—so the codebase scales without chaos."
+        },
+        "observability": {
+          "title": "Logging & error visibility",
+          "description": "I design where to log and where to catch errors so issues can be diagnosed fast."
+        },
+        "security": {
+          "title": "Security (general)",
+          "description": "I consider auth and baseline security practices, and plan safeguards like rate limiting for risky endpoints."
+        },
+        "delivery": {
+          "title": "Documentation & delivery",
+          "description": "Key decisions are documented briefly; handover includes clear setup and run instructions."
+        }
+      }
+    },
+    "useCases": {
+      "title": "What I build with these",
+      "labels": { "problem": "Problem", "approach": "Approach" },
+      "cards": {
+        "mobile": {
+          "title": "Mobile App Architecture",
+          "problem": "As apps grow, state management, UI consistency, and integrations (push, auth) can become scattered and fragile.",
+          "approach": "I modularize screens, keep state flows consistent, and make offline/online + notification flows explicit."
+        },
+        "backend": {
+          "title": "Backend & API",
+          "problem": "Mismatch between client and API contracts, inconsistent error flows, and repetitive data-access code.",
+          "approach": "I keep the service layer simple, isolate data access, and standardize auth + error responses."
+        },
+        "ai": {
+          "title": "AI / Computer Vision",
+          "problem": "Reliable integration for image understanding, detection/tracking, or automation workflows inside real products.",
+          "approach": "I validate with a small PoC, then bring it into production with clear performance and integration boundaries."
+        }
+      }
+    },
+    "toolsList": {
+      "title": "Tools (by category)",
+      "ariaLabel": "Tool categories list"
+    },
+    "categories": {
+      "development": {
+        "title": "Development",
+        "why": "A focused base set for fast iteration, reliable debugging, and reproducible setup."
+      },
+      "mobileDevelopment": {
+        "title": "Mobile Development",
+        "why": "Tools that help me validate real device behavior and control platform specifics."
+      },
+      "design": {
+        "title": "Design",
+        "why": "To make flows and key UX decisions visible before writing code."
+      },
+      "productivity": {
+        "title": "Productivity",
+        "why": "To keep decisions, tasks, and communication in sync—so delivery stays predictable."
+      },
+      "hardware": {
+        "title": "Hardware",
+        "why": "A multi-environment + real-device approach for compatibility and accurate testing."
+      }
+    },
+    "tools": {
+      "editor": "Editor",
+      "terminal": "Terminal",
+      "versionControl": "Version Control",
+      "packageManager": "Package Manager",
+      "flutter": "Flutter",
+      "android": "Android",
+      "ios": "iOS",
+      "testing": "Testing",
+      "uiux": "UI/UX",
+      "prototyping": "Prototyping",
+      "noteTaking": "Note Taking",
+      "projectManagement": "Project Management",
+      "communication": "Communication",
+      "laptop": "Laptop",
+      "phone": "Phone"
+    },
+    "roles": {
+      "editor": "Editor — daily driver",
+      "terminal": "Terminal — automation & scripts",
+      "versionControl": "Git — versioning",
+      "packageManager": "Package manager — dependency flow",
+      "flutter": "SDK — primary build lane",
+      "android": "IDE — Android build & debug",
+      "ios": "IDE — iOS build & debug",
+      "testing": "Testing — fast feedback",
+      "uiux": "Design — flow & details",
+      "prototyping": "Prototyping — validation",
+      "noteTaking": "Notes — decisions",
+      "projectManagement": "Process — tracking",
+      "communication": "Communication — coordination"
+    },
+    "hardware": {
+      "devEnv": "Development environment",
+      "devEnvValue": "macOS & Windows workflow",
+      "devEnvRole": "Environment — compatibility & speed",
+      "mobileTest": "Mobile testing",
+      "mobileTestValue": "Real devices + emulator",
+      "mobileTestRole": "Quality — behavior validation"
+    },
+    "finalCta": {
+      "title": "Want to build a system?",
+      "subtitle": "From idea to production, we can clarify the process together.",
+      "primary": "Get in touch",
+      "secondary": "View projects"
+    },
+    "cta": {
+      "text": "Want to know more about my setup? Feel free to ask!",
+      "button": "Get in touch"
+    }
+  },
+  "common": {
+    "copied": "Copied!",
+    "failedToCopy": "Failed to copy"
+  }
+}
+

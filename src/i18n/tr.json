@@ -1,0 +1,369 @@
+{
+  "site": {
+    "name": "Atilla Mercimek",
+    "role": "Software Engineer • Mobile & AI Developer",
+    "tagline": "Flutter, C#/.NET, Python/OpenCV, Mobile & AI Development",
+    "description": "Atatürk University Software Engineering mezunu. Mobil uygulamalar (Flutter), masaüstü uygulamalar (C#/.NET) ve AI projeleri (Python/OpenCV) geliştiriyorum. Temiz, okunabilir ve sürdürülebilir kod yazmayı önemsiyorum.",
+    "availability": "İş için müsait"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "work": "Projeler",
+    "blog": "Blog",
+    "more": "Daha Fazla",
+    "contact": "İletişim"
+  },
+  "home": {
+    "hero": {
+      "ctaProjects": "Projeler",
+      "ctaCV": "CV'yi İndir"
+    },
+    "cards": {
+      "collaboration": {
+        "title": "İşbirliği",
+        "description": "Açık iletişim ve net teslim süreçleri ile projelerinizi zamanında ve kaliteli şekilde hayata geçiriyorum."
+      },
+      "passionate": {
+        "title": "En son teknolojilere tutkulu"
+      },
+      "timezone": {
+        "title": "Saat dilimi iletişimi",
+        "tr": "GMT+3: 09:00–18:00",
+        "eu": "GMT+1: 09:00–17:00",
+        "us": "GMT-5: 09:00–17:00",
+        "popover": {
+          "available": "Çalışma Saatleri"
+        },
+        "remote": "UZAKTAN"
+      },
+      "workTogether": {
+        "title": "Birlikte çalışalım",
+        "description": "Projeleriniz için hazırım. Birlikte harika şeyler yapalım.",
+        "cta": "İletişime Geç"
+      },
+      "browserMock": {
+        "placeholder": "Ürün Vitrin"
+      }
+    },
+    "skills": {
+      "title": "YETENEKLERİM",
+      "subtitle": "Komuta Merkezi",
+      "hint": "Bir yetkinlik alanı seçerek detayları görüntüleyin."
+    },
+    "skillsCommandCenter": {
+      "leftTitle": "Skill Areas",
+      "identityEyebrow": "Identity",
+      "identityTitle": "Ürün Odaklı Mobil & Yapay Zeka Mühendisi",
+      "identitySubtitle": "Üretime hazır, ölçeklenebilir sistemler tasarlar ve hayata geçiririm.",
+      "primaryCta": "Projeleri Gör",
+      "detailTitle": "Detail Zone",
+      "detailHint": "Bir yetkinlik alanı seçerek detayları görüntüleyin.",
+      "usedIn": "Kullanıldığı projeler",
+      "tech": "Tech chips",
+      "close": "Kapat",
+      "noProjects": "Projelerimde pratik olarak kullanıyorum.",
+      "sheetTitle": "Detay"
+    },
+    "selectedWork": {
+      "title": "Seçili Projeler",
+      "subtitle": "Son projelerimin bir vitrin",
+      "viewCaseStudy": "Vaka çalışmasını görüntüle",
+      "seeMore": "Daha fazla proje gör"
+    }
+  },
+  "cv": {
+    "title": "Hakkımda",
+    "downloadCV": "CV İndir (PDF)",
+    "skills": {
+      "title": "Kategoriye Göre Yetenekler",
+      "swarmTitle": "YETENEKLERİM",
+      "swarmSubtitle": "Teknoloji Yığınım",
+      "swarmHint": "Teknoloji yığınımı keşfetmek için imlecinizi hareket ettirin",
+      "categories": {
+        "programmingLanguages": "Programlama Dilleri",
+        "mobileDevelopment": "Mobil Geliştirme",
+        "backendTools": "Backend & Araçlar",
+        "other": "Diğer"
+      }
+    },
+    "experience": {
+      "title": "Deneyim",
+      "entries": {
+        "correctionsOfficer": {
+          "role": "Ceza İnfaz Memuru",
+          "type": "Sözleşmeli",
+          "location": "Erzurum, Türkiye",
+          "description": [
+            "Operasyonel süreçlerde otomasyon fırsatlarını belirleme ve değerlendirme",
+            "Teknik birimlere geçiş için kavram kanıtı (PoC) çözümleri geliştirme",
+            "Yazılım odaklı görevlerde ve süreç iyileştirmelerinde aktif rol alma",
+            "Merkezi kontrol sistemleri için verimlilik artırıcı çözümler oluşturma"
+          ]
+        },
+        "softwareEngineeringIntern": {
+          "role": "Yazılım Mühendisliği Stajyeri",
+          "type": "Tam Zamanlı",
+          "location": "Erzurum, Türkiye",
+          "description": [
+            "İşbirlikçi ekip ortamında yazılım geliştirme projelerine aktif katılım",
+            "Kıdemli geliştiricilerle yakın çalışma, kod incelemelerine katılım ve Agile metodolojilerini uygulama",
+            "Bireysel görevlerden sorumlu olma, zamanında ve yüksek kaliteli teslimatlar sağlama",
+            "Yazılım mühendisliği iş akışları, problem çözme ve etkili ekip çalışmasında pratik deneyim kazanma"
+          ]
+        },
+        "flutterDeveloper": {
+          "role": "Flutter Geliştirici",
+          "type": "Serbest",
+          "location": "Uzaktan",
+          "description": [
+            "Kangaroom: Öğretmen-veli iletişim platformu - çift uygulama mimarisi, FCM push bildirimleri ve gerçek zamanlı mesajlaşma akışı geliştirme",
+            "Ölçeklenebilir mobil uygulamalar için mimari tasarım ve geliştirme",
+            "RESTful API entegrasyonları ve backend servisleri ile sorunsuz çalışma",
+            "Performans optimizasyonu ve kullanıcı deneyimi iyileştirmelerine odaklanma"
+          ]
+        }
+      }
+    },
+    "education": {
+      "title": "Eğitim",
+      "graduated": "Mezun",
+      "degree": "Yazılım Mühendisliği",
+      "institution": "Atatürk Üniversitesi"
+    },
+    "cta": {
+      "title": "Birlikte Çalışalım",
+      "description": "İşbirliği yapmak ister misiniz? Bana ulaşmaktan çekinmeyin.",
+      "button": "İletişime Geç"
+    }
+  },
+  "projects": {
+    "title": "Projeler",
+    "subtitle": "Mobil geliştirme projelerimin bir koleksiyonu",
+    "all": "Tümü",
+    "viewCaseStudy": "Vaka çalışmasını görüntüle",
+    "viewOnGitHub": "GitHub'da Görüntüle",
+    "noProjects": "Bu kategoride proje bulunamadı",
+    "categories": {
+      "all": "Tümü",
+      "flutter": "Flutter",
+      "android": "Android",
+      "ios": "iOS",
+      "backend": "Backend",
+      "desktop": "Masaüstü",
+      "web": "Web"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Mobil geliştirme, Flutter ve teknoloji hakkında düşünceler",
+    "minRead": "dakika okuma",
+    "updated": "Güncellendi",
+    "backToBlog": "Blog'a Dön",
+    "discussPost": "Bu gönderiyi tartış",
+    "noPosts": "Henüz blog gönderisi yok. Yakında tekrar kontrol edin!",
+    "readMore": "Devamını Oku",
+    "published": "Yayınlandı"
+  },
+  "contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Aklınızda bir proje var mı veya işbirliği yapmak ister misiniz? Sizden haber almayı çok isterim.",
+    "form": {
+      "title": "Mesaj Gönder",
+      "note": "Form verilerinizi e-posta istemcinize otomatik olarak aktarır. Aşağıdaki butona tıklayarak mesajınızı gönderebilirsiniz.",
+      "name": "Ad",
+      "namePlaceholder": "Adınız",
+      "email": "E-posta",
+      "emailPlaceholder": "e-posta@example.com",
+      "message": "Mesaj",
+      "messagePlaceholder": "Mesajınız...",
+      "sendViaEmail": "E-posta ile Gönder",
+      "clickToOpen": "E-posta istemcinizi açmak için tıklayın",
+      "copyEmail": "E-posta Adresini Kopyala",
+      "emailCopied": "E-posta adresi kopyalandı!",
+      "fillForm": "Lütfen tüm alanları doldurun",
+      "invalidEmail": "Geçerli bir e-posta adresi girin"
+    },
+    "social": {
+      "title": "Veya şu yollarla ulaşın",
+      "github": {
+        "name": "GitHub",
+        "description": "Kodlarımı ve açık kaynak katkılarımı inceleyin"
+      },
+      "linkedin": {
+        "name": "LinkedIn",
+        "description": "Profesyonel olarak benimle bağlantı kurun"
+      },
+      "email": {
+        "name": "E-posta",
+        "description": "Bana doğrudan e-posta gönderin"
+      }
+    }
+  },
+  "uses": {
+    "title": "Kullandıklarım",
+    "subtitle": "Günlük iş akışımda kullandığım araçlar + bu araçlarla nasıl üretim yaptığım.",
+    "hero": {
+      "title": "Kullandıklarım",
+      "subtitle": "Günlük iş akışımda kullandığım araçlar ve bu araçlarla nasıl üretim yaptığım. Liste değil; süreç, standart ve çıktıya odaklı bir özet.",
+      "badge": "Üretime hazır workflow"
+    },
+    "howIbuild": {
+      "title": "Bir projeyi nasıl geliştiriyorum?",
+      "activeLabel": "Aktif adım",
+      "steps": {
+        "plan": {
+          "title": "Tasarım & Planlama",
+          "description": "Önce hedefi ve kapsamı netleştiririm: ekran akışı, veri modeli ve teslim kriterleri. Notları kısa, kararları izlenebilir tutarım."
+        },
+        "build": {
+          "title": "Uygulama",
+          "description": "UI/UX doğruluğu, performans ve sürdürülebilirlik odaklı geliştiririm. Parçalara bölüp tekrar kullanılabilir bileşenler üretirim."
+        },
+        "api": {
+          "title": "Backend & API",
+          "description": "İstemciyle net sözleşme (request/response), auth ve hata senaryolarını birlikte tasarlarım. Basit, test edilebilir servis katmanı kurarım."
+        },
+        "ai": {
+          "title": "AI / Otomasyon",
+          "description": "Görüntü işleme veya otomasyon ihtiyacı varsa küçük PoC’larla doğrularım. Entegrasyonu net API sınırlarıyla yürütürüm."
+        },
+        "deploy": {
+          "title": "Deploy",
+          "description": "Canlı ortama çıkışı kontrollü yaparım: temel sunucu konfigürasyonu, reverse proxy ve sertifika. Basit, bakımı kolay bir kurulum hedeflerim."
+        },
+        "quality": {
+          "title": "İzleme & Kalite",
+          "description": "Hata senaryolarını görünür kılarım: loglama, kullanıcı geri bildirimi ve performans gözlemi. Değişiklikleri küçük parçalara bölerim."
+        }
+      }
+    },
+    "standards": {
+      "title": "Çalışma Standartlarım",
+      "items": {
+        "vcs": {
+          "title": "Versiyon kontrol stratejisi",
+          "description": "Branch/PR akışıyla değişiklikleri küçük ve okunur tutarım; geri dönüş (rollback) kolay olsun."
+        },
+        "clean": {
+          "title": "Temiz kod & modüler mimari",
+          "description": "Sınırları net, test edilebilir modüller kurarım; isimlendirme ve sorumlulukları sade tutarım."
+        },
+        "observability": {
+          "title": "Loglama & hata izleme",
+          "description": "Sorunu hızlı bulmak için anlamlı log ve hata yakalama noktaları tasarlarım."
+        },
+        "security": {
+          "title": "Güvenlik (genel)",
+          "description": "Auth ve temel güvenlik pratiklerini gözetirim; riskli uçları sınırlamak için rate limit gibi önlemleri planlarım."
+        },
+        "delivery": {
+          "title": "Dokümantasyon & teslim süreci",
+          "description": "Kritik kararları kısa dokümante eder, teslimde kurulum/çalıştırma adımlarını net bırakırım."
+        }
+      }
+    },
+    "useCases": {
+      "title": "Bu araçlarla neler inşa ediyorum?",
+      "labels": { "problem": "Problem", "approach": "Yaklaşım" },
+      "cards": {
+        "mobile": {
+          "title": "Mobil Uygulama Mimarisi",
+          "problem": "Büyüyen uygulamalarda state yönetimi, UI tutarlılığı ve bildirim/entegrasyonların dağınık hale gelmesi.",
+          "approach": "Ekranları modüllere ayırıp state yönetimini tek bir akışta toplarım; offline/online senaryoları ve bildirim akışını netleştiririm."
+        },
+        "backend": {
+          "title": "Backend & API",
+          "problem": "İstemciyle uyumsuz API sözleşmeleri, karmaşık hata akışları ve veri erişiminde tekrar eden kodlar.",
+          "approach": "Servis katmanını sade tutar, veri erişimini ayrıştırırım; auth ve hata cevaplarını standartlaştırırım."
+        },
+        "ai": {
+          "title": "AI / Computer Vision",
+          "problem": "Görüntüden anlam çıkarma, tespit/izleme veya kalite kontrol gibi senaryolarda güvenilir entegrasyon ihtiyacı.",
+          "approach": "Önce küçük bir PoC ile doğrular, ardından performans ve entegrasyon sınırlarını netleştirerek ürün içine taşırım."
+        }
+      }
+    },
+    "toolsList": {
+      "title": "Araçlarım (kategori bazlı)",
+      "ariaLabel": "Araç kategorileri listesi"
+    },
+    "categories": {
+      "development": {
+        "title": "Geliştirme",
+        "why": "Hızlı iterasyon, güvenilir debug ve tekrar üretilebilir kurulum için sade bir temel set."
+      },
+      "mobileDevelopment": {
+        "title": "Mobil Geliştirme",
+        "why": "Gerçek cihaz davranışını yakalamak ve platform detaylarını kontrol etmek için araçları birlikte kullanırım."
+      },
+      "design": {
+        "title": "Tasarım",
+        "why": "Ekran akışını ve kritik UX kararlarını koddan önce görünür kılmak için."
+      },
+      "productivity": {
+        "title": "Üretkenlik",
+        "why": "Karar kayıtları, iş takibi ve iletişimi tek yerde tutarak teslim süreçlerini netleştirmek için."
+      },
+      "hardware": {
+        "title": "Donanım",
+        "why": "Uyumluluk ve test doğruluğu için çoklu ortam + gerçek cihaz yaklaşımı."
+      }
+    },
+    "tools": {
+      "editor": "Editör",
+      "terminal": "Terminal",
+      "versionControl": "Versiyon Kontrolü",
+      "packageManager": "Paket Yöneticisi",
+      "flutter": "Flutter",
+      "android": "Android",
+      "ios": "iOS",
+      "testing": "Test",
+      "uiux": "UI/UX",
+      "prototyping": "Prototipleme",
+      "noteTaking": "Not Alma",
+      "projectManagement": "Proje Yönetimi",
+      "communication": "İletişim",
+      "laptop": "Laptop",
+      "phone": "Telefon"
+    },
+    "roles": {
+      "editor": "Editör — günlük kullanım",
+      "terminal": "Terminal — otomasyon & script",
+      "versionControl": "Git — versiyonlama",
+      "packageManager": "Paket yöneticisi — bağımlılık yönetimi",
+      "flutter": "SDK — ana üretim hattı",
+      "android": "IDE — Android build & debug",
+      "ios": "IDE — iOS build & debug",
+      "testing": "Test — hızlı geri bildirim",
+      "uiux": "Tasarım — ekran akışı",
+      "prototyping": "Prototip — fikir doğrulama",
+      "noteTaking": "Notlar — karar kaydı",
+      "projectManagement": "Süreç — iş takibi",
+      "communication": "İletişim — koordinasyon"
+    },
+    "hardware": {
+      "devEnv": "Geliştirme ortamı",
+      "devEnvValue": "macOS & Windows akışı",
+      "devEnvRole": "Ortam — uyumluluk ve hız",
+      "mobileTest": "Mobil test",
+      "mobileTestValue": "Gerçek cihazlar + emülatör",
+      "mobileTestRole": "Kalite — davranış doğrulama"
+    },
+    "finalCta": {
+      "title": "Bir sistem mi kurmak istiyorsun?",
+      "subtitle": "Fikirden canlı ortama kadar süreci birlikte netleştirebiliriz.",
+      "primary": "İletişime Geç",
+      "secondary": "Projeleri Gör"
+    },
+    "cta": {
+      "text": "Kurulumum hakkında daha fazla bilgi almak ister misiniz? Sormaktan çekinmeyin!",
+      "button": "İletişime Geç"
+    }
+  },
+  "common": {
+    "copied": "Kopyalandı!",
+    "failedToCopy": "Kopyalama başarısız"
+  }
+}
+
