@@ -1,6 +1,6 @@
 ---
 import Badge from './Badge.astro';
-import { getDefaultLanguage, getTranslations } from '@/i18n';
+import { getTranslations, type Language } from '@/i18n';
 
 interface Props {
   number: string;
@@ -8,11 +8,11 @@ interface Props {
   description: string;
   tags: string[];
   href: string;
+  locale: Language;
 }
 
-const { number, title, description, tags, href } = Astro.props;
-const lang = getDefaultLanguage();
-const t = getTranslations(lang);
+const { number, title, description, tags, href, locale } = Astro.props;
+const t = getTranslations(locale);
 ---
 
 <a

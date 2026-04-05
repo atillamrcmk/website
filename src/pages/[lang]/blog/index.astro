@@ -1,0 +1,132 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import { getCollection } from 'astro:content';
+import { getTranslations, type Language } from '@/i18n';
+import { isValidLocale } from '@/i18n/routing';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'tr' } }, { params: { lang: 'en' } }];
+}
+
+const raw = Astro.params.lang;
+if (!isValidLocale(raw)) {
+  return Astro.redirect('/tr/blog', 302);
+}
+const lang: Language = raw;
+const t = getTranslations(lang);
+const prefix = `/${lang}`;
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout
+  title={`${t.blog.title} - Atilla Mercimek`}
+  description={t.blog.subtitle}
+  locale={lang}
+>
+  <Section class="pt-24 sm:pt-28 md:pt-32">
+    <div class="mb-8 sm:mb-12 scroll-reveal">
+      <h1 class="heading-1 mb-3 sm:mb-4 text-light-text">{t.blog.title}</h1>
+      <p class="body-large text-light-muted">
+        {t.blog.subtitle}
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => (
+        <a
+          href={`${prefix}/blog/${post.slug}`}
+          class="group card card-hover scroll-reveal transition-all hover:border-accent-from/30 hover:shadow-lg hover:shadow-accent-from/10 flex flex-col"
+        >
+          <div class="mb-3 sm:mb-4 flex flex-wrap items-center gap-2 text-xs text-light-muted">
+            <svg
+              class="h-4 w-4 text-accent-from/60 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+            <time datetime={post.data.pubDate.toISOString()} class="truncate">
+              {post.data.pubDate.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+            <span>•</span>
+            <span class="whitespace-nowrap">{post.data.readTime} {t.blog.minRead}</span>
+          </div>
+          <h2 class="heading-4 mb-2 sm:mb-3 text-light-text transition-colors group-hover:text-accent-from line-clamp-2">
+            {lang === 'tr' && post.data.titleTr ? post.data.titleTr : post.data.title}
+          </h2>
+          <p class="body-small mb-3 sm:mb-4 text-light-muted line-clamp-3">
+            {lang === 'tr' && post.data.descriptionTr ? post.data.descriptionTr : post.data.description}
+          </p>
+          {((lang === 'tr' && post.data.tagsTr && post.data.tagsTr.length > 0) || post.data.tags.length > 0) && (
+            <div class="mb-3 sm:mb-4 flex flex-wrap gap-2">
+              {(lang === 'tr' && post.data.tagsTr ? post.data.tagsTr : post.data.tags).slice(0, 3).map((tag) => (
+                <span class="rounded-full border border-white/10 bg-white/[0.05] px-2 sm:px-2.5 py-1 text-xs font-medium text-light-muted transition-colors group-hover:border-accent-from/50 group-hover:text-accent-from/80 backdrop-blur-sm">
+                  {tag}
+                </span>
+              ))}
+              {(lang === 'tr' && post.data.tagsTr ? post.data.tagsTr : post.data.tags).length > 3 && (
+                <span class="rounded-full border border-white/10 bg-white/[0.05] px-2 sm:px-2.5 py-1 text-xs font-medium text-light-muted backdrop-blur-sm">
+                  +{(lang === 'tr' && post.data.tagsTr ? post.data.tagsTr : post.data.tags).length - 3}
+                </span>
+              )}
+            </div>
+          )}
+          <div class="mt-auto flex items-center gap-2 body-small font-medium text-accent-from transition-transform group-hover:translate-x-1 min-h-[44px]">
+            <span>{t.blog.readMore}</span>
+            <svg
+              class="h-4 w-4 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {posts.length === 0 && (
+      <div class="py-16 text-center scroll-reveal">
+        <div class="mx-auto max-w-md">
+          <svg
+            class="mx-auto mb-4 h-16 w-16 text-light-muted/50"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+          <p class="text-lg text-light-muted">{t.blog.noPosts}</p>
+        </div>
+      </div>
+    )}
+  </Section>
+</BaseLayout>
+

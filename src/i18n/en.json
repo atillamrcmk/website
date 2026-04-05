@@ -364,6 +364,9 @@
   "common": {
     "copied": "Copied!",
     "failedToCopy": "Failed to copy"
+  },
+  "footer": {
+    "rights": "All rights reserved."
   }
 }
 

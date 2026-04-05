@@ -1,4 +1,13 @@
 ---
+import { getTranslations, type Language } from '@/i18n';
+
+interface Props {
+  locale: Language;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/atillamrcmk', icon: 'github' },
   { name: 'LinkedIn', href: 'https://linkedin.com/in/atilla-mercimek-6025b7222', icon: 'linkedin' },
@@ -6,11 +15,40 @@ const socialLinks = [
 ];
 ---
 
-<footer class="border-t border-dark-border bg-dark-surface">
+<footer class="border-t border-dark-border bg-dark-surface pb-[env(safe-area-inset-bottom)]">
   <div class="container-custom section-padding">
+    <nav
+      aria-label="Koleksiyonum legal"
+      class="mb-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-b border-white/5 pb-8 text-center sm:gap-x-6 sm:gap-y-3"
+    >
+      <a
+        href="/privacy-policy"
+        class="inline-flex min-h-[44px] items-center px-2 text-sm text-light-muted transition-colors hover:text-light-text"
+      >
+        Privacy Policy
+      </a>
+      <a
+        href="/terms-of-service"
+        class="inline-flex min-h-[44px] items-center px-2 text-sm text-light-muted transition-colors hover:text-light-text"
+      >
+        Terms of Service
+      </a>
+      <a
+        href="/gizlilik-politikasi"
+        class="inline-flex min-h-[44px] items-center px-2 text-sm text-light-muted transition-colors hover:text-light-text"
+      >
+        Gizlilik Politikası
+      </a>
+      <a
+        href="/kullanim-kosullari"
+        class="inline-flex min-h-[44px] items-center px-2 text-sm text-light-muted transition-colors hover:text-light-text"
+      >
+        Kullanım Koşulları
+      </a>
+    </nav>
     <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
       <p class="text-sm text-light-muted">
-        © {new Date().getFullYear()} Atilla Mercimek. All rights reserved.
+        © {new Date().getFullYear()} Atilla Mercimek. {t.footer.rights}
       </p>
       <div class="flex items-center gap-6">
         {socialLinks.map((link) => (
@@ -18,7 +56,7 @@ const socialLinks = [
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-light-muted transition-colors hover:text-light-text"
+            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-light-muted transition-colors hover:text-light-text"
             aria-label={link.name}
           >
             <svg

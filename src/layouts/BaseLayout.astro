@@ -2,24 +2,32 @@
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import '@/styles/global.css';
-import { getDefaultLanguage, getTranslations } from '@/i18n';
+import { getTranslations, type Language } from '@/i18n';
 
 interface Props {
   title: string;
   description?: string;
+  /** UI locale for nav + default meta (matches URL segment /tr/ or /en/). */
+  locale: Language;
+  /** Override document language for legal pages when needed. */
+  htmlLang?: Language;
 }
 
-const lang = getDefaultLanguage();
-const t = getTranslations(lang);
-const { title, description = t.site.description } = Astro.props;
+const { title, description: descriptionProp, locale, htmlLang } = Astro.props;
+const t = getTranslations(locale);
+const description = descriptionProp ?? t.site.description;
+const documentLang = htmlLang ?? locale;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://atillamercimek.com');
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={documentLang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -39,11 +47,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://atillame
     <title>{title}</title>
   </head>
   <body>
-    <Navbar />
-    <main>
+    <script is:inline>
+      (function () {
+        try {
+          var p = location.pathname;
+          var m = p.match(/^\/(tr|en)(\/|$)/);
+          if (m) localStorage.setItem('language', m[1]);
+          else if (p.indexOf('/privacy-policy') === 0 || p.indexOf('/terms-of-service') === 0)
+            localStorage.setItem('language', 'en');
+          else if (p.indexOf('/gizlilik-politikasi') === 0 || p.indexOf('/kullanim-kosullari') === 0)
+            localStorage.setItem('language', 'tr');
+        } catch (e) {}
+      })();
+    </script>
+    <Navbar locale={locale} />
+    <main class="min-w-0 overflow-x-hidden">
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
     <script>
       // Scroll reveal with IntersectionObserver
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

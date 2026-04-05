@@ -1,0 +1,156 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import LegalDocument from '@/components/LegalDocument.astro';
+
+const supportEmail = 'arterasoftkoleksiyonum@gmail.com';
+const title = 'Privacy Policy – Koleksiyonum';
+const description =
+  'Privacy Policy for the Koleksiyonum mobile app: what data we collect, how we use it, third-party services, retention, and your rights.';
+---
+
+<BaseLayout {title} {description} locale="en" htmlLang="en">
+  <Section class="pt-24 sm:pt-28 md:pt-32">
+    <LegalDocument
+      title="Privacy Policy – Koleksiyonum"
+      effectiveLabel="Effective Date"
+      effectiveDateIso="2026-04-05"
+      effectiveDateDisplay="April 5, 2026"
+    >
+      <p>
+        Koleksiyonum (“we”, “our”, or “us”) is committed to protecting your privacy. This Privacy Policy explains in
+        detail how we collect, use, store, and delete your data when you use our mobile application.
+      </p>
+
+      <h2>1. Data We Collect</h2>
+
+      <h3>1.1 Account &amp; Identity Data</h3>
+      <ul>
+        <li>Email address</li>
+        <li>Username and display name</li>
+        <li>Authentication provider (email, Google, Apple)</li>
+        <li>Password hash (for email-based accounts only)</li>
+      </ul>
+
+      <h3>1.2 Profile Data (Optional)</h3>
+      <ul>
+        <li>First name and last name</li>
+        <li>Country and city</li>
+        <li>Profile photo</li>
+      </ul>
+
+      <h3>1.3 User Content</h3>
+      <ul>
+        <li>Messages between users</li>
+        <li>Collections and saved products</li>
+        <li>Favorites and notes</li>
+        <li>Product links submitted by users</li>
+      </ul>
+
+      <h3>1.4 Product &amp; Interaction Data</h3>
+      <ul>
+        <li>Product URLs and metadata</li>
+        <li>Price history data</li>
+        <li>Price alerts and tracking preferences</li>
+        <li>User interaction events (app activity logs)</li>
+      </ul>
+
+      <h3>1.5 Technical &amp; Device Data</h3>
+      <ul>
+        <li>Device notification token (for push notifications)</li>
+        <li>IP address and user-agent (for security and logging)</li>
+      </ul>
+
+      <h3>1.6 Optional Metrics</h3>
+      <ul>
+        <li>User-provided metrics such as height, weight, or similar values</li>
+      </ul>
+
+      <h2>2. How We Use Your Data</h2>
+      <p>We use your data for the following purposes:</p>
+      <ul>
+        <li>Account creation and authentication</li>
+        <li>Providing core application functionality</li>
+        <li>Enabling social features (messaging, following)</li>
+        <li>Sending notifications</li>
+        <li>Improving performance and user experience</li>
+        <li>Preventing abuse and ensuring security</li>
+      </ul>
+
+      <h2>3. Data Sources</h2>
+      <p>Some data displayed in the application is retrieved from third-party websites.</p>
+      <ul>
+        <li>The application is not affiliated with these platforms</li>
+        <li>Data is collected based on user-provided URLs</li>
+        <li>Information may be incomplete, outdated, or inaccurate</li>
+      </ul>
+
+      <h2>4. Third-Party Services</h2>
+      <p>We may use third-party services including:</p>
+      <ul>
+        <li>Google Sign-In</li>
+        <li>Apple Sign-In</li>
+        <li>Firebase Cloud Messaging (FCM)</li>
+      </ul>
+      <p>
+        These services may process limited data necessary for authentication or notification delivery.
+      </p>
+
+      <h2>5. Data Storage and Retention</h2>
+      <p>Your data is stored securely and retained only as long as necessary.</p>
+      <ul>
+        <li>Account data is retained while your account is active</li>
+        <li>Logs and technical data may be retained for security purposes</li>
+        <li>Cached and derived data may be stored temporarily for performance</li>
+      </ul>
+
+      <h2>6. Account Deletion</h2>
+      <p>You may delete your account directly within the application.</p>
+      <p>Upon deletion:</p>
+      <ul>
+        <li>Personal data is deleted or anonymized</li>
+        <li>
+          Associated user data (messages, collections, events, attributes, and related records) is permanently removed
+        </li>
+        <li>Certain system-level or aggregated data may remain where it cannot be linked back to you</li>
+      </ul>
+
+      <h2>7. Data Security</h2>
+      <p>
+        We implement appropriate technical and organizational measures to protect your data. However, no system is
+        completely secure, and we cannot guarantee absolute security.
+      </p>
+
+      <h2>8. User Responsibilities</h2>
+      <p>Users are responsible for:</p>
+      <ul>
+        <li>Content they upload or share</li>
+        <li>Accuracy of submitted product links</li>
+        <li>Compliance with applicable laws</li>
+      </ul>
+
+      <h2>9. Third-Party Content Disclaimer</h2>
+      <p>
+        All product data, trademarks, and content belong to their respective owners. Koleksiyonum does not claim
+        ownership of third-party content.
+      </p>
+
+      <h2>10. Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access your data</li>
+        <li>Request deletion</li>
+        <li>Update your information</li>
+      </ul>
+
+      <h2>11. Contact</h2>
+      <p>For any privacy-related inquiries:</p>
+      <p>
+        <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
+      </p>
+
+      <h2>12. Updates</h2>
+      <p>We may update this Privacy Policy. Changes will be posted on this page.</p>
+    </LegalDocument>
+  </Section>
+</BaseLayout>

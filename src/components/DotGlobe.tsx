@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { getTimezoneById, type Timezone } from "@/data/timezones";
-import { getTranslations, getDefaultLanguage } from "@/i18n";
+import { getTranslations, type Language } from "@/i18n";
 
 interface DotGlobeProps {
   selectedTimezone: Timezone;
+  initialLang?: Language;
   onTimezoneChange?: (timezone: Timezone) => void;
   globeTextureSrc?: string; // e.g. "/assets/globe-dots.png"
 }
 
 export default function DotGlobe({
   selectedTimezone: initialTimezone,
+  initialLang = "tr",
   onTimezoneChange,
   globeTextureSrc: propGlobeTextureSrc,
 }: DotGlobeProps) {
@@ -242,30 +244,7 @@ export default function DotGlobe({
   const scale =
     reducedMotion ? 1 : 1 + Math.abs(currentTransform.x) * 0.01 + Math.abs(currentTransform.y) * 0.01;
 
-  // language (optional)
-  const [lang, setLang] = useState<"tr" | "en">("tr");
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setLang(getDefaultLanguage());
-      
-      // Listen for language changes
-      const handleStorageChange = () => {
-        setLang(getDefaultLanguage());
-      };
-      window.addEventListener("storage", handleStorageChange);
-      
-      // Also listen for custom language change event
-      const handleLanguageChange = () => {
-        setLang(getDefaultLanguage());
-      };
-      window.addEventListener("language-change", handleLanguageChange);
-      
-      return () => {
-        window.removeEventListener("storage", handleStorageChange);
-        window.removeEventListener("language-change", handleLanguageChange);
-      };
-    }
-  }, []);
+  const [lang] = useState<Language>(initialLang);
   const isTurkish = lang === "tr";
   const t = getTranslations(lang);
 

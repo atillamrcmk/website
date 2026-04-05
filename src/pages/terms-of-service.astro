@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import LegalDocument from '@/components/LegalDocument.astro';
+
+const supportEmail = 'arterasoftkoleksiyonum@gmail.com';
+const title = 'Terms of Service – Koleksiyonum';
+const description =
+  'Terms of Service for the Koleksiyonum app: scope of service, user accounts, third-party content, liability, and contact information.';
+---
+
+<BaseLayout {title} {description} locale="en" htmlLang="en">
+  <Section class="pt-24 sm:pt-28 md:pt-32">
+    <LegalDocument
+      title="Terms of Service – Koleksiyonum"
+      effectiveLabel="Effective Date"
+      effectiveDateIso="2026-04-05"
+      effectiveDateDisplay="April 5, 2026"
+    >
+      <p>By using Koleksiyonum, you agree to the following terms.</p>
+
+      <h2>1. Scope of Service</h2>
+      <p>
+        Koleksiyonum allows users to save, organize, and track products and related price information from third-party
+        websites.
+      </p>
+
+      <h2>2. User Accounts</h2>
+      <p>
+        Users are responsible for maintaining the confidentiality of their accounts and for activities carried out
+        under their accounts.
+      </p>
+
+      <h2>3. User Content</h2>
+      <p>
+        Users are solely responsible for the content, links, messages, notes, and other information they submit or share
+        through the app.
+      </p>
+
+      <h2>4. Third-Party Platforms</h2>
+      <p>
+        Koleksiyonum is not affiliated with, endorsed by, or sponsored by third-party marketplaces or websites whose
+        product data may appear in the app. All trademarks, logos, product names, and content belong to their respective
+        owners.
+      </p>
+
+      <h2>5. Data Accuracy Disclaimer</h2>
+      <p>
+        Product information, availability, and pricing may change at any time. Koleksiyonum does not guarantee that
+        third-party data is complete, accurate, or up to date.
+      </p>
+
+      <h2>6. Prohibited Use</h2>
+      <p>
+        You agree not to misuse the service, interfere with the app, attempt unauthorized access, or use the app in
+        violation of any applicable law.
+      </p>
+
+      <h2>7. Account Termination</h2>
+      <p>
+        We may suspend or terminate accounts that violate these terms, create security risks, or misuse the platform.
+      </p>
+
+      <h2>8. Limitation of Liability</h2>
+      <p>
+        Koleksiyonum shall not be responsible for inaccuracies in third-party product data, service interruptions, or
+        content provided by users or third parties.
+      </p>
+
+      <h2>9. Changes to the Service</h2>
+      <p>We may modify, update, suspend, or discontinue parts of the service at any time.</p>
+
+      <h2>10. Contact</h2>
+      <p>For support or legal inquiries:</p>
+      <p>
+        <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
+      </p>
+    </LegalDocument>
+  </Section>
+</BaseLayout>

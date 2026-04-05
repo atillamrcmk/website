@@ -1,0 +1,135 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import LegalDocument from '@/components/LegalDocument.astro';
+
+const supportEmail = 'arterasoftkoleksiyonum@gmail.com';
+const title = 'Gizlilik Politikası – Koleksiyonum';
+const description =
+  'Koleksiyonum mobil uygulaması için gizlilik politikası: toplanan veriler, kullanım amaçları, üçüncü taraf servisler ve haklarınız.';
+---
+
+<BaseLayout {title} {description} locale="tr" htmlLang="tr">
+  <Section class="pt-24 sm:pt-28 md:pt-32">
+    <LegalDocument
+      title="Gizlilik Politikası – Koleksiyonum"
+      effectiveLabel="Yürürlük Tarihi"
+      effectiveDateIso="2026-04-05"
+      effectiveDateDisplay="5 Nisan 2026"
+    >
+      <p>
+        Koleksiyonum olarak kişisel verilerinizin korunmasına önem veriyoruz. Bu politika, uygulamayı kullanırken
+        verilerinizin nasıl işlendiğini açıklar.
+      </p>
+
+      <h2>1. Toplanan Veriler</h2>
+
+      <h3>1.1 Hesap Bilgileri</h3>
+      <ul>
+        <li>E-posta adresi</li>
+        <li>Kullanıcı adı ve görünen ad</li>
+        <li>Giriş yöntemi (email, Google, Apple)</li>
+        <li>Şifre hash’i (yalnızca e-posta hesapları için)</li>
+      </ul>
+
+      <h3>1.2 Profil Bilgileri (Opsiyonel)</h3>
+      <ul>
+        <li>Ad, soyad</li>
+        <li>Ülke, şehir</li>
+        <li>Profil fotoğrafı</li>
+      </ul>
+
+      <h3>1.3 Kullanıcı İçeriği</h3>
+      <ul>
+        <li>Mesajlar</li>
+        <li>Koleksiyonlar ve favoriler</li>
+        <li>Kaydedilen ürün bağlantıları</li>
+      </ul>
+
+      <h3>1.4 Ürün ve Etkileşim Verileri</h3>
+      <ul>
+        <li>Ürün URL’leri</li>
+        <li>Fiyat geçmişi</li>
+        <li>Fiyat alarmları</li>
+        <li>Kullanım etkinlikleri (event kayıtları)</li>
+      </ul>
+
+      <h3>1.5 Teknik Veriler</h3>
+      <ul>
+        <li>Bildirim cihaz tokenı</li>
+        <li>IP adresi ve tarayıcı bilgisi</li>
+      </ul>
+
+      <h3>1.6 Opsiyonel Veriler</h3>
+      <ul>
+        <li>Boy, kilo gibi kullanıcı tarafından girilen bilgiler</li>
+      </ul>
+
+      <h2>2. Verilerin Kullanımı</h2>
+      <p>Verileriniz:</p>
+      <ul>
+        <li>Uygulamayı çalıştırmak</li>
+        <li>Hesap yönetimi</li>
+        <li>Sosyal özellikleri sağlamak</li>
+        <li>Bildirim göndermek</li>
+        <li>Güvenliği sağlamak</li>
+      </ul>
+      <p>amacıyla kullanılır.</p>
+
+      <h2>3. Veri Kaynakları</h2>
+      <p>Uygulama, ürün ve fiyat bilgilerini üçüncü taraf sitelerden alır.</p>
+      <ul>
+        <li>Bu platformlarla resmi bağlantımız yoktur</li>
+        <li>Veriler kullanıcı tarafından sağlanan bağlantılardan elde edilir</li>
+        <li>Verilerin doğruluğu garanti edilmez</li>
+      </ul>
+
+      <h2>4. Üçüncü Taraf Servisler</h2>
+      <ul>
+        <li>Google giriş</li>
+        <li>Apple giriş</li>
+        <li>Firebase bildirim sistemi</li>
+      </ul>
+
+      <h2>5. Veri Saklama</h2>
+      <p>Veriler yalnızca gerekli süre boyunca saklanır.</p>
+
+      <h2>6. Hesap Silme</h2>
+      <p>Kullanıcılar uygulama içinden hesaplarını silebilir.</p>
+      <p>Silme sonrası:</p>
+      <ul>
+        <li>Kişisel veriler silinir veya anonimleştirilir</li>
+        <li>Kullanıcıya ait tüm ilişkili kayıtlar temizlenir</li>
+      </ul>
+
+      <h2>7. Güvenlik</h2>
+      <p>Verilerin korunması için gerekli teknik önlemler alınmaktadır.</p>
+
+      <h2>8. Kullanıcı Sorumluluğu</h2>
+      <p>Kullanıcılar:</p>
+      <ul>
+        <li>paylaştıkları içerikten</li>
+        <li>girdikleri verilerin doğruluğundan</li>
+      </ul>
+      <p>sorumludur.</p>
+
+      <h2>9. Üçüncü Taraf İçerik</h2>
+      <p>Uygulamada gösterilen tüm ürün ve içeriklerin hakları ilgili platformlara aittir.</p>
+
+      <h2>10. Haklarınız</h2>
+      <ul>
+        <li>Veriye erişim</li>
+        <li>Silme talebi</li>
+        <li>Güncelleme</li>
+      </ul>
+
+      <h2>11. İletişim</h2>
+      <p>
+        <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
+      </p>
+
+      <h2>12. Güncellemeler</h2>
+      <p>Politika zaman zaman güncellenebilir.</p>
+    </LegalDocument>
+  </Section>
+</BaseLayout>

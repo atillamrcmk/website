@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  effectiveLabel: string;
+  effectiveDateIso: string;
+  effectiveDateDisplay: string;
+}
+
+const { title, effectiveLabel, effectiveDateIso, effectiveDateDisplay } = Astro.props;
+---
+
+<article class="mx-auto max-w-3xl">
+  <header class="mb-10 sm:mb-12">
+    <h1 class="heading-1 mb-4 text-light-text">{title}</h1>
+    <p class="body-small text-light-muted">
+      {effectiveLabel}:{' '}
+      <time datetime={effectiveDateIso}>{effectiveDateDisplay}</time>
+    </p>
+  </header>
+  <div class="card legal-doc">
+    <slot />
+  </div>
+</article>

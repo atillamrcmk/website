@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getTranslations, type Language } from '@/i18n';
+import { isValidLocale } from '@/i18n/routing';
+import UsesPage from '@/components/pages/UsesPage';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'tr' } }, { params: { lang: 'en' } }];
+}
+
+const raw = Astro.params.lang;
+if (!isValidLocale(raw)) {
+  return Astro.redirect('/tr/uses', 302);
+}
+const lang: Language = raw;
+const t = getTranslations(lang);
+---
+
+<BaseLayout
+  title={`${t.uses.title} - Atilla Mercimek`}
+  description={t.uses.subtitle}
+  locale={lang}
+>
+  <UsesPage client:load initialLang={lang} />
+</BaseLayout>
+

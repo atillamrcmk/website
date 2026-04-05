@@ -1,0 +1,78 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import LegalDocument from '@/components/LegalDocument.astro';
+
+const supportEmail = 'arterasoftkoleksiyonum@gmail.com';
+const title = 'Kullanım Koşulları – Koleksiyonum';
+const description =
+  'Koleksiyonum uygulaması kullanım koşulları: hizmet kapsamı, hesaplar, üçüncü taraf platformlar, sorumluluk ve iletişim.';
+---
+
+<BaseLayout {title} {description} locale="tr" htmlLang="tr">
+  <Section class="pt-24 sm:pt-28 md:pt-32">
+    <LegalDocument
+      title="Kullanım Koşulları – Koleksiyonum"
+      effectiveLabel="Yürürlük Tarihi"
+      effectiveDateIso="2026-04-05"
+      effectiveDateDisplay="5 Nisan 2026"
+    >
+      <p>Koleksiyonum uygulamasını kullanarak aşağıdaki koşulları kabul etmiş olursunuz.</p>
+
+      <h2>1. Hizmetin Kapsamı</h2>
+      <p>
+        Koleksiyonum, kullanıcıların üçüncü taraf sitelerde yer alan ürünleri kaydetmesine, düzenlemesine ve fiyat takibi
+        yapmasına yardımcı olur.
+      </p>
+
+      <h2>2. Kullanıcı Hesapları</h2>
+      <p>Kullanıcılar hesaplarının güvenliğinden ve hesapları üzerinden yapılan işlemlerden sorumludur.</p>
+
+      <h2>3. Kullanıcı İçeriği</h2>
+      <p>
+        Kullanıcılar uygulama üzerinden paylaştıkları bağlantılar, mesajlar, notlar ve diğer içeriklerden kendileri
+        sorumludur.
+      </p>
+
+      <h2>4. Üçüncü Taraf Platformlar</h2>
+      <p>
+        Koleksiyonum, uygulamada verileri yer alabilecek üçüncü taraf pazar yerleri veya siteler ile bağlantılı,
+        sponsorluk ilişkisi içinde veya onlar tarafından onaylanmış değildir. Tüm marka, logo, ürün adı ve içerik
+        hakları ilgili sahiplerine aittir.
+      </p>
+
+      <h2>5. Veri Doğruluğu Uyarısı</h2>
+      <p>
+        Ürün bilgileri, stok durumu ve fiyatlar her zaman değişebilir. Koleksiyonum, üçüncü taraf verilerin tam, doğru
+        veya güncel olduğunu garanti etmez.
+      </p>
+
+      <h2>6. Yasaklı Kullanım</h2>
+      <p>
+        Kullanıcılar uygulamayı kötüye kullanamaz, sisteme yetkisiz erişim sağlamaya çalışamaz ve yürürlükteki mevzuata
+        aykırı kullanımda bulunamaz.
+      </p>
+
+      <h2>7. Hesapların Sonlandırılması</h2>
+      <p>
+        Bu koşulları ihlal eden, güvenlik riski oluşturan veya platformu kötüye kullanan hesaplar askıya alınabilir veya
+        kapatılabilir.
+      </p>
+
+      <h2>8. Sorumluluğun Sınırlandırılması</h2>
+      <p>
+        Koleksiyonum, üçüncü taraf ürün verilerindeki hatalardan, hizmet kesintilerinden veya kullanıcılar ya da üçüncü
+        taraflarca sağlanan içeriklerden sorumlu tutulamaz.
+      </p>
+
+      <h2>9. Hizmette Değişiklik</h2>
+      <p>Hizmetin bir kısmı veya tamamı herhangi bir zamanda değiştirilebilir, güncellenebilir veya durdurulabilir.</p>
+
+      <h2>10. İletişim</h2>
+      <p>Destek ve hukuki konular için:</p>
+      <p>
+        <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
+      </p>
+    </LegalDocument>
+  </Section>
+</BaseLayout>

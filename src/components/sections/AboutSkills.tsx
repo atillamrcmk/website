@@ -63,6 +63,7 @@ function Chip({ label }: { label: string }) {
 }
 
 export default function AboutSkills({ lang, projects }: AboutSkillsProps) {
+  const base = `/${lang}`;
   const c = aboutSkillsContent;
   const H = (key: keyof typeof c.headings) => c.headings[key][lang];
 
@@ -134,7 +135,7 @@ export default function AboutSkills({ lang, projects }: AboutSkillsProps) {
           {previews.map((p) => (
             <a
               key={p.title}
-              href="/projects"
+              href={`${base}/projects`}
               className="card card-hover block"
               aria-label={`${c.proof.viewProject[lang]}: ${p.title}`}
             >
@@ -160,13 +161,13 @@ export default function AboutSkills({ lang, projects }: AboutSkillsProps) {
             <p className="text-base leading-relaxed text-light-muted">{c.proof.ctaBar.text[lang]}</p>
             <div className="flex flex-wrap gap-3">
               <a
-                href="/contact"
+                href={`${base}/contact`}
                 className="inline-flex items-center justify-center rounded-[24px] bg-gradient-to-r from-accent-from to-accent-to px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-from focus:ring-offset-2 focus:ring-offset-dark-bg"
               >
                 {c.proof.ctaBar.primary[lang]}
               </a>
               <a
-                href="/projects"
+                href={`${base}/projects`}
                 className="inline-flex items-center justify-center rounded-[24px] border border-white/10 bg-white/[0.05] px-5 py-2.5 text-sm font-semibold text-light-text backdrop-blur-md transition-all hover:border-accent-from/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent-from focus:ring-offset-2 focus:ring-offset-dark-bg"
               >
                 {c.proof.ctaBar.secondary[lang]}

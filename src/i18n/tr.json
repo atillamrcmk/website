@@ -364,6 +364,9 @@
   "common": {
     "copied": "Kopyalandı!",
     "failedToCopy": "Kopyalama başarısız"
+  },
+  "footer": {
+    "rights": "Tüm hakları saklıdır."
   }
 }
 

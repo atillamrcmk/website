@@ -1,0 +1,147 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import Badge from '@/components/Badge.astro';
+import { getTranslations, type Language } from '@/i18n';
+import { isValidLocale } from '@/i18n/routing';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'tr' } }, { params: { lang: 'en' } }];
+}
+
+const raw = Astro.params.lang;
+if (!isValidLocale(raw)) {
+  return Astro.redirect('/tr/projects', 302);
+}
+const lang: Language = raw;
+const t = getTranslations(lang);
+const prefix = `/${lang}`;
+
+import { selectedProjects } from '@/data/projects';
+
+// Map projects with categories
+const projects = selectedProjects.map((project, index) => {
+  let category = 'Flutter';
+  if (project.tags.some(tag => tag.includes('Android') || tag.includes('Kotlin'))) {
+    category = 'Android';
+  } else if (project.tags.some(tag => tag.includes('iOS') || tag.includes('Swift'))) {
+    category = 'iOS';
+  } else if (project.tags.some(tag => tag.includes('Node.js') || tag.includes('Backend'))) {
+    category = 'Backend';
+  } else if (project.tags.some(tag => tag.includes('C#') || tag.includes('.NET') || tag.includes('WinForms') || tag.includes('Desktop'))) {
+    category = 'Desktop';
+  } else if (project.tags.some(tag => tag.includes('Web') || tag.includes('JavaScript') || tag.includes('WebRTC'))) {
+    category = 'Web';
+  } else if (project.tags.some(tag => tag.includes('Flutter'))) {
+    category = 'Flutter';
+  }
+  
+  return {
+    ...project,
+    category,
+  };
+});
+
+const categoryKeys = ['All', 'Flutter', 'Android', 'iOS', 'Backend', 'Desktop', 'Web'];
+const categories = categoryKeys.map(key => {
+  if (key === 'All') return t.projects.categories.all;
+  return t.projects.categories[key.toLowerCase() as keyof typeof t.projects.categories];
+});
+
+const categoryKeyMap: Record<string, string> = {
+  [t.projects.categories.all]: 'All',
+  [t.projects.categories.flutter]: 'Flutter',
+  [t.projects.categories.android]: 'Android',
+  [t.projects.categories.ios]: 'iOS',
+  [t.projects.categories.backend]: 'Backend',
+  [t.projects.categories.desktop]: 'Desktop',
+  [t.projects.categories.web]: 'Web',
+};
+
+const currentCategoryParam = Astro.url.searchParams.get('category') || t.projects.categories.all;
+const currentCategory = categoryKeyMap[currentCategoryParam] || 'All';
+
+const filteredProjects =
+  currentCategory === 'All'
+    ? projects
+    : projects.filter((p) => p.category === currentCategory);
+---
+
+<BaseLayout
+  title={`${t.projects.title} - Atilla Mercimek`}
+  description={t.projects.subtitle}
+  locale={lang}
+>
+  <Section class="pt-24 sm:pt-28 md:pt-32">
+    <div class="mb-8 sm:mb-12 scroll-reveal">
+      <h1 class="heading-1 mb-3 sm:mb-4 text-light-text">
+        {t.projects.title}
+      </h1>
+      <p class="body-large text-light-muted">
+        {t.projects.subtitle}
+      </p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="mb-6 sm:mb-8 flex flex-wrap gap-2 scroll-reveal">
+      {categories.map((category) => {
+        const categoryKey = categoryKeyMap[category] || 'All';
+        const isActive = categoryKey === currentCategory;
+        const href =
+          category === t.projects.categories.all
+            ? `${prefix}/projects`
+            : `${prefix}/projects?category=${encodeURIComponent(category)}`;
+        return (
+          <a
+            href={href}
+            class={`rounded-full px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold transition-all min-h-[44px] inline-flex items-center ${
+              isActive
+                ? 'bg-gradient-to-r from-accent-from to-accent-to text-white'
+                : 'border border-white/10 bg-white/[0.05] text-light-muted backdrop-blur-md hover:border-accent-from/50 hover:text-light-text'
+            }`}
+          >
+            {category}
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="space-y-4 sm:space-y-6">
+      {filteredProjects.map((project) => (
+        <ProjectCard
+          number={project.number}
+          title={lang === 'tr' ? project.title : (project.titleEn || project.title)}
+          description={lang === 'tr' ? project.description : (project.descriptionEn || project.description)}
+          tags={project.tags}
+          href={project.href}
+          locale={lang}
+        />
+      ))}
+    </div>
+
+    {filteredProjects.length === 0 && (
+      <div class="py-16 text-center scroll-reveal">
+        <div class="mx-auto max-w-md">
+          <svg
+            class="mx-auto mb-4 h-16 w-16 text-light-muted/50"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+            />
+          </svg>
+          <p class="text-lg text-light-muted">{t.projects.noProjects}</p>
+        </div>
+      </div>
+    )}
+  </Section>
+</BaseLayout>
+

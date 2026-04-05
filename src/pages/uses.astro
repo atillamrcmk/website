@@ -1,16 +1,3 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getDefaultLanguage, getTranslations } from '@/i18n';
-import UsesPage from '@/components/pages/UsesPage';
-
-const lang = getDefaultLanguage();
-const t = getTranslations(lang);
+return Astro.redirect('/tr/uses', 302);
 ---
-
-<BaseLayout
-  title={`${t.uses.title} - Atilla Mercimek`}
-  description={t.uses.subtitle}
->
-  <UsesPage client:load />
-</BaseLayout>
-

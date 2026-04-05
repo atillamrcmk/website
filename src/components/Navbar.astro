@@ -1,28 +1,39 @@
 ---
-import { site } from '@/data/site';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import { getDefaultLanguage, getTranslations } from '@/i18n';
+import { getTranslations, type Language } from '@/i18n';
 
-const lang = getDefaultLanguage();
-const t = getTranslations(lang);
+interface Props {
+  locale: Language;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const prefix = `/${locale}`;
 
 const navItems = [
-  { href: '/', label: t.nav.home },
-  { href: '/cv', label: t.nav.about },
-  { href: '/projects', label: t.nav.work },
-  { href: '/blog', label: t.nav.blog },
-  { href: '/uses', label: t.nav.more },
+  { href: `${prefix}/`, label: t.nav.home },
+  { href: `${prefix}/cv`, label: t.nav.about },
+  { href: `${prefix}/projects`, label: t.nav.work },
+  { href: `${prefix}/blog`, label: t.nav.blog },
+  { href: `${prefix}/uses`, label: t.nav.more },
 ];
 
-const currentPath = Astro.url.pathname;
+function normPath(p: string) {
+  const s = p.replace(/\/$/, '');
+  return s === '' ? '/' : s;
+}
+
+const cur = normPath(Astro.url.pathname);
+const contactHref = `${prefix}/contact`;
 ---
 
+
 <nav
-  class="fixed top-2 left-1/2 z-50 w-[calc(100%-16px)] max-w-[92vw] sm:max-w-none sm:w-auto -translate-x-1/2 rounded-full border border-white/10 bg-white/[0.05] px-3 sm:px-6 py-2 sm:py-3 backdrop-blur-md"
+  class="fixed top-2 left-1/2 z-50 w-[min(100%-16px,calc(100vw-16px))] max-w-[92vw] sm:max-w-none sm:w-auto -translate-x-1/2 rounded-full border border-white/10 bg-white/[0.05] px-2 sm:px-6 py-2 sm:py-3 backdrop-blur-md"
   role="navigation"
   aria-label="Main navigation"
 >
-  <div class="flex items-center justify-between gap-2 sm:gap-4 md:gap-6">
+  <div class="flex min-w-0 items-center justify-between gap-1.5 sm:gap-4 md:gap-6">
     <!-- Desktop Menu -->
     <ul class="hidden items-center gap-1 md:flex" role="list">
       {navItems.map((item) => (
@@ -30,13 +41,11 @@ const currentPath = Astro.url.pathname;
           <a
             href={item.href}
             class={`relative rounded-full px-3 lg:px-4 py-2 text-sm font-medium transition-colors ${
-              currentPath === item.href
-                ? 'text-light-text'
-                : 'text-light-muted hover:text-light-text'
+              normPath(item.href) === cur ? 'text-light-text' : 'text-light-muted hover:text-light-text'
             }`}
           >
             {item.label}
-            {currentPath === item.href && (
+            {normPath(item.href) === cur && (
               <span
                 class="absolute inset-0 rounded-full bg-gradient-to-r from-accent-from/20 to-accent-to/20"
                 aria-hidden="true"
@@ -50,7 +59,8 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-button"
-      class="md:hidden text-light-text min-w-[44px] min-h-[44px] flex items-center justify-center -m-2"
+      type="button"
+      class="touch-manipulation md:hidden text-light-text min-w-[44px] min-h-[44px] flex shrink-0 items-center justify-center -m-2"
       aria-label="Toggle menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -72,14 +82,14 @@ const currentPath = Astro.url.pathname;
     </button>
 
     <!-- Language Switcher -->
-    <div class="flex-shrink-0">
+    <div class="flex min-w-0 flex-shrink-0 items-center">
       <LanguageSwitcher client:load />
     </div>
 
     <!-- CTA Button -->
     <a
-      href="/contact"
-      class="hidden md:block rounded-full bg-gradient-to-r from-accent-from to-accent-to px-3 lg:px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 whitespace-nowrap"
+      href={contactHref}
+      class="hidden min-h-[44px] md:inline-flex md:items-center md:justify-center rounded-full bg-gradient-to-r from-accent-from to-accent-to px-3 lg:px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 whitespace-nowrap"
     >
       {t.nav.contact}
     </a>
@@ -88,7 +98,7 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="absolute top-full left-0 right-0 mt-2 hidden rounded-2xl border border-white/10 bg-dark-bg/95 backdrop-blur-md p-4 md:hidden"
+    class="absolute top-full left-0 right-0 z-50 mt-2 max-h-[min(70vh,28rem)] hidden overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-dark-bg/95 p-4 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-md md:hidden"
     role="menu"
   >
     <ul class="flex flex-col gap-2" role="list">
@@ -97,7 +107,7 @@ const currentPath = Astro.url.pathname;
           <a
             href={item.href}
             class={`block rounded-lg px-4 py-3 text-sm min-h-[44px] flex items-center transition-colors ${
-              currentPath === item.href
+              normPath(item.href) === cur
                 ? 'bg-accent-from/20 text-light-text font-semibold'
                 : 'text-light-muted hover:bg-white/[0.05] hover:text-light-text'
             }`}
@@ -109,7 +119,7 @@ const currentPath = Astro.url.pathname;
       ))}
       <li>
         <a
-          href="/contact"
+          href={contactHref}
           class="mt-2 block rounded-lg bg-gradient-to-r from-accent-from to-accent-to px-4 py-3 min-h-[44px] flex items-center justify-center text-center text-sm font-semibold text-white"
           role="menuitem"
         >
@@ -125,10 +135,39 @@ const currentPath = Astro.url.pathname;
   const menu = document.getElementById('mobile-menu');
 
   if (button && menu) {
-    button.addEventListener('click', () => {
-      const isExpanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', String(!isExpanded));
-      menu.classList.toggle('hidden');
+    const navEl = button.closest('nav');
+
+    const closeMenu = () => {
+      menu.classList.add('hidden');
+      button.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    const openMenu = () => {
+      menu.classList.remove('hidden');
+      button.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (menu.classList.contains('hidden')) openMenu();
+      else closeMenu();
+    });
+
+    menu.querySelectorAll('a[href]').forEach((a) => {
+      a.addEventListener('click', () => closeMenu());
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) closeMenu();
+    });
+
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (!(t instanceof Node) || menu.classList.contains('hidden')) return;
+      if (navEl && navEl.contains(t)) return;
+      closeMenu();
     });
   }
 </script>

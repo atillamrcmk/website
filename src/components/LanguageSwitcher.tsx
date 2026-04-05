@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getDefaultLanguage, setLanguage, type Language } from '@/i18n';
+import { type Language } from '@/i18n';
+import { currentLocaleFromPath, navigateToLocale } from '@/i18n/routing';
 
 export default function LanguageSwitcher() {
   const [currentLang, setCurrentLang] = useState<Language>('tr');
@@ -7,33 +8,41 @@ export default function LanguageSwitcher() {
 
   useEffect(() => {
     setMounted(true);
-    setCurrentLang(getDefaultLanguage());
+    setCurrentLang(currentLocaleFromPath(window.location.pathname));
   }, []);
+
+  const btnBase =
+    'touch-manipulation min-h-[44px] min-w-[40px] rounded-full px-2.5 text-xs font-medium transition-all sm:min-w-[44px] inline-flex items-center justify-center';
 
   if (!mounted) {
     return (
-      <div className="flex items-center gap-2">
-        <button
-          className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-light-muted backdrop-blur-md transition-all hover:border-accent-from/50 hover:bg-white/10"
-          aria-label="Language selector"
+      <div className="flex items-center gap-1">
+        <span
+          className={`${btnBase} border border-white/10 bg-white/[0.05] text-light-muted backdrop-blur-md`}
+          aria-hidden="true"
         >
           TR
-        </button>
+        </span>
       </div>
     );
   }
 
   const handleLanguageChange = (lang: Language) => {
     if (lang !== currentLang) {
-      setLanguage(lang);
+      navigateToLocale(lang);
     }
   };
 
   return (
-    <div className="flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.05] p-1 backdrop-blur-md">
+    <div
+      className="flex items-center gap-0.5 rounded-full border border-white/10 bg-white/[0.05] p-1 backdrop-blur-md"
+      role="group"
+      aria-label="Language"
+    >
       <button
+        type="button"
         onClick={() => handleLanguageChange('tr')}
-        className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+        className={`${btnBase} ${
           currentLang === 'tr'
             ? 'bg-gradient-to-r from-accent-from to-accent-to text-white'
             : 'text-light-muted hover:text-light-text'
@@ -44,8 +53,9 @@ export default function LanguageSwitcher() {
         TR
       </button>
       <button
+        type="button"
         onClick={() => handleLanguageChange('en')}
-        className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+        className={`${btnBase} ${
           currentLang === 'en'
             ? 'bg-gradient-to-r from-accent-from to-accent-to text-white'
             : 'text-light-muted hover:text-light-text'
@@ -58,7 +68,3 @@ export default function LanguageSwitcher() {
     </div>
   );
 }
-
-
-
-

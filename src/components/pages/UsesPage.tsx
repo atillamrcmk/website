@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { getDefaultLanguage, getTranslations, type Language } from '@/i18n';
+import { useMemo, useState } from 'react';
+import { getTranslations, type Language } from '@/i18n';
 
 import ToolsHero from '@/components/sections/ToolsHero';
 import WorkflowStepper, { type WorkflowStep } from '@/components/sections/WorkflowStepper';
@@ -8,15 +8,12 @@ import UseCases from '@/components/sections/UseCases';
 import ToolsCategories, { type ToolCategory } from '@/components/sections/ToolsCategories';
 import ToolsCTA from '@/components/sections/ToolsCTA';
 
-export default function UsesPage() {
-  // Keep SSR/initial HTML deterministic (TR) to avoid hydration mismatch.
-  const [lang, setLang] = useState<Language>('tr');
-  const [mounted, setMounted] = useState(false);
+interface UsesPageProps {
+  initialLang?: Language;
+}
 
-  useEffect(() => {
-    setMounted(true);
-    setLang(getDefaultLanguage());
-  }, []);
+export default function UsesPage({ initialLang = 'tr' }: UsesPageProps) {
+  const [lang] = useState<Language>(initialLang);
 
   const t = useMemo(() => getTranslations(lang), [lang]);
   const u = t.uses;
@@ -169,20 +166,9 @@ export default function UsesPage() {
       <ToolsCTA
         title={u.finalCta.title}
         subtitle={u.finalCta.subtitle}
-        primary={{ label: u.finalCta.primary, href: '/contact' }}
-        secondary={{ label: u.finalCta.secondary, href: '/projects' }}
+        primary={{ label: u.finalCta.primary, href: `/${lang}/contact` }}
+        secondary={{ label: u.finalCta.secondary, href: `/${lang}/projects` }}
       />
-
-      {/* Small fallback: keep old CTA text for continuity (hidden once mounted) */}
-      {!mounted ? (
-        <section className="section-padding">
-          <div className="container-custom">
-            <div className="card scroll-reveal p-6 text-center">
-              <p className="text-base leading-relaxed text-light-muted">{u.cta.text}</p>
-            </div>
-          </div>
-        </section>
-      ) : null}
     </div>
   );
 }

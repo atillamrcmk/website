@@ -1,5 +1,5 @@
 import { useEffect, useId, useMemo, useState } from 'react';
-import { getDefaultLanguage, getTranslations, type Language } from '@/i18n';
+import { getTranslations, type Language } from '@/i18n';
 import { skillAreas, type SkillArea } from '@/data/skillAreas';
 import SkillButton from '@/components/ui/SkillButton';
 import SkillDetailPanel from '@/components/ui/SkillDetailPanel';
@@ -11,6 +11,7 @@ interface SkillsCommandCenterProps {
     href: string;
     tags: string[];
   }>;
+  initialLang?: Language;
 }
 
 type ProjectLike = SkillsCommandCenterProps['projects'][number];
@@ -69,9 +70,8 @@ function iconFor(id: SkillArea['id']) {
   );
 }
 
-export default function SkillsCommandCenter({ projects }: SkillsCommandCenterProps) {
-  const [lang, setLang] = useState<Language>('tr');
-  useEffect(() => setLang(getDefaultLanguage()), []);
+export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: SkillsCommandCenterProps) {
+  const [lang] = useState<Language>(initialLang);
   const t = useMemo(() => getTranslations(lang), [lang]);
   const c = t.home.skillsCommandCenter;
 
@@ -173,7 +173,7 @@ export default function SkillsCommandCenter({ projects }: SkillsCommandCenterPro
 
             <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3">
               <a
-                href="/projects"
+                href={`/${lang}/projects`}
                 className="inline-flex items-center justify-center rounded-[20px] sm:rounded-[24px] bg-gradient-to-r from-accent-from to-accent-to px-4 sm:px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-from focus:ring-offset-2 focus:ring-offset-dark-bg min-h-[44px]"
               >
                 {c.primaryCta}

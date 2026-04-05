@@ -1,5 +1,6 @@
 import tr from './tr.json';
 import en from './en.json';
+import { navigateToLocale } from './routing';
 
 export type Language = 'tr' | 'en';
 
@@ -42,10 +43,7 @@ export function getDefaultLanguage(): Language {
 }
 
 export function setLanguage(lang: Language) {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem('language', lang);
-    // Reload page to apply language
-    window.location.reload();
-  }
+  if (typeof window === 'undefined') return;
+  navigateToLocale(lang);
 }
 

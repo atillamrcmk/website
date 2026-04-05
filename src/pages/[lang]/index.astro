@@ -1,0 +1,472 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Card from '@/components/Card.astro';
+import Marquee from '@/components/Marquee.astro';
+import DotGlobe from '@/components/DotGlobe';
+import SkillsCommandCenter from '@/components/sections/SkillsCommandCenter';
+// Use public folder for globe texture (more reliable)
+const globeTextureSrc = '/globe-dots.png';
+import { Image } from 'astro:assets';
+import { getTranslations, type Language } from '@/i18n';
+import { isValidLocale } from '@/i18n/routing';
+import { site as siteData } from '@/data/site';
+import { selectedProjects } from '@/data/projects';
+import { skillPills } from '@/data/skills';
+import { timezones, getTimezoneById } from '@/data/timezones';
+import foto from '@/assets/foto.jpg';
+import cv from '@/assets/Atilla-Mercimek-CV.pdf';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'tr' } }, { params: { lang: 'en' } }];
+}
+
+const raw = Astro.params.lang;
+if (!isValidLocale(raw)) {
+  return Astro.redirect('/tr/', 302);
+}
+const lang: Language = raw;
+const t = getTranslations(lang);
+const site = { ...t.site, links: siteData.links };
+const defaultTimezone = getTimezoneById('tr') || timezones[0];
+const prefix = `/${lang}`;
+---
+
+<BaseLayout
+  title={`${site.name} - ${site.role}`}
+  description={site.description}
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 overflow-hidden">
+    <!-- Background Glow Blob -->
+    <div
+      class="absolute -right-20 sm:-right-40 -top-20 sm:-top-40 h-[300px] w-[300px] sm:h-[600px] sm:w-[600px] rounded-full bg-gradient-to-r from-accent-from/20 via-accent-to/20 to-accent-from/20 blur-3xl opacity-50"
+      aria-hidden="true"
+    />
+    <div
+      class="absolute -left-20 sm:-left-40 -bottom-20 sm:-bottom-40 h-[250px] w-[250px] sm:h-[500px] sm:w-[500px] rounded-full bg-gradient-to-r from-accent-to/10 via-accent-from/10 to-accent-to/10 blur-3xl opacity-30"
+      aria-hidden="true"
+    />
+
+    <div class="container-custom relative z-10">
+      <div class="flex flex-col items-center gap-6 sm:gap-8 md:flex-row md:items-center md:gap-12">
+        <!-- Avatar -->
+        <div class="flex-shrink-0 md:order-2">
+          <div class="relative">
+            <Image
+              src={foto}
+              alt="Atilla Mercimek"
+              class="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover border-4 border-white/20 shadow-lg shadow-accent-from/20 md:h-40 md:w-40"
+              width={160}
+              height={160}
+              loading="eager"
+            />
+            <!-- Decorative Rings -->
+            <div class="absolute inset-0 -z-10 rounded-full border-2 border-accent-from/20 animate-pulse" style="transform: scale(1.2);" />
+            <div class="absolute inset-0 -z-10 rounded-full border border-accent-to/20" style="transform: scale(1.4);" />
+          </div>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="w-full max-w-4xl scroll-reveal md:order-1 text-center md:text-left">
+          <h1 class="heading-1 mb-4 sm:mb-6">
+            <span class="block">{site.name} —</span>
+            <span class="gradient-text block">{site.role}</span>
+          </h1>
+          <p class="body-large mb-6 sm:mb-8 max-w-2xl mx-auto md:mx-0 text-light-muted">
+            {site.description}
+          </p>
+          <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
+            <a
+              href={`${prefix}/projects`}
+              class="btn-primary text-center"
+            >
+              {t.home.hero.ctaProjects}
+            </a>
+            <a
+              href={cv}
+              target="_blank"
+              rel="noopener"
+              class="btn-secondary text-center"
+              aria-label="Download CV"
+            >
+              {t.home.hero.ctaCV}
+            </a>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Availability Badge -->
+  <section class="pb-6 sm:pb-8">
+    <div class="container-custom">
+      <div class="scroll-reveal flex justify-center md:justify-start">
+        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-md">
+          <span class="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+          <span class="body-small text-light-muted">{site.availability}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <Marquee items={skillPills} />
+
+  <!-- Card Grid Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
+        <!-- Card 1: Collaboration -->
+        <Card span="eight" class="relative overflow-hidden">
+          <div class="relative z-10 flex flex-col gap-4 sm:gap-6 md:flex-row md:items-center">
+            <div class="flex-shrink-0">
+              <div class="relative mx-auto h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28">
+                <Image
+                  src={foto}
+                  alt="Atilla Mercimek"
+                  class="h-full w-full rounded-full object-cover border-2 border-white/20"
+                  loading="eager"
+                  width={112}
+                  height={112}
+                />
+                <!-- Decorative Rings -->
+                <div class="absolute inset-0 -z-10 rounded-full border border-white/5" style="transform: scale(1.25);" />
+                <div class="absolute inset-0 -z-10 rounded-full border border-white/5" style="transform: scale(1.5);" />
+                <div class="absolute inset-0 -z-10 rounded-full border border-white/5" style="transform: scale(1.75);" />
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="heading-4 mb-2 sm:mb-3 text-light-text">{t.home.cards.collaboration.title}</h3>
+              <p class="body-base text-light-muted">
+                {t.home.cards.collaboration.description}
+              </p>
+            </div>
+          </div>
+        </Card>
+
+        <!-- Card 2: Passionate -->
+        <Card span="half">
+          <h3 class="heading-4 mb-3 sm:mb-4 text-light-text">
+            {t.home.cards.passionate.title}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {skillPills.map((skill) => (
+              <span
+                class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.05] px-2.5 sm:px-3 py-1.5 text-xs font-medium text-light-muted backdrop-blur-sm"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </Card>
+
+        <!-- Card 3: Time Zone -->
+        <Card span="half" class="relative overflow-hidden">
+          <h3 class="heading-4 mb-3 sm:mb-4 text-light-text">{t.home.cards.timezone.title}</h3>
+          <div class="mb-4 flex flex-wrap gap-2">
+            {timezones.map((tz) => (
+              <button
+                data-timezone={tz.id}
+                class="timezone-btn rounded-full border border-white/10 bg-white/[0.05] px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-light-text transition-all hover:border-accent-from/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent-from min-h-[44px]"
+                title={`${tz.label} (${tz.gmt})`}
+                aria-pressed="false"
+              >
+                {tz.id.toUpperCase()}
+              </button>
+            ))}
+          </div>
+          <!-- Dot Globe -->
+          <div class="h-40 sm:h-48 w-full">
+            <DotGlobe client:load selectedTimezone={defaultTimezone} globeTextureSrc={globeTextureSrc} initialLang={lang} />
+          </div>
+        </Card>
+
+        <!-- Card 4: Let's Work Together -->
+        <Card span="half" class="relative overflow-hidden">
+          <div class="relative z-10">
+            <h3 class="heading-4 mb-3 sm:mb-4 text-light-text">{t.home.cards.workTogether.title}</h3>
+            <p class="body-base mb-4 sm:mb-6 text-light-muted">
+              {t.home.cards.workTogether.description}
+            </p>
+            <div class="flex flex-col gap-2.5 sm:gap-3">
+              <a
+                href={`${prefix}/contact`}
+                class="btn-primary text-center"
+              >
+                {t.home.cards.workTogether.cta}
+              </a>
+              <button
+                id="copy-email"
+                data-email={site.links.email}
+                class="btn-secondary text-sm sm:text-base truncate"
+              >
+                {site.links.email}
+              </button>
+            </div>
+          </div>
+          <!-- Decorative Gradient Ring -->
+          <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-r from-accent-from/20 to-accent-to/20 blur-2xl" />
+        </Card>
+
+        <!-- Card 5: Browser Mock -->
+        <Card span="half" class="overflow-hidden">
+          <div class="mb-3 sm:mb-4 flex items-center gap-2">
+            <div class="flex gap-1.5 flex-shrink-0">
+              <div class="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-red-500/50" />
+              <div class="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-yellow-500/50" />
+              <div class="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-green-500/50" />
+            </div>
+            <div class="ml-1 sm:ml-2 flex-1 rounded-lg border border-white/10 bg-white/[0.05] px-2 sm:px-3 py-1 sm:py-1.5 text-xs text-light-muted backdrop-blur-sm truncate">
+              https://atilla.dev
+            </div>
+          </div>
+          <div class="aspect-video rounded-lg border border-white/10 bg-gradient-to-br from-accent-from/10 via-accent-from/5 to-accent-to/10 p-4 sm:p-8">
+            <div class="flex h-full items-center justify-center">
+              <div class="text-center">
+                <svg
+                  class="mx-auto h-8 w-8 sm:h-12 sm:w-12 text-accent-from/30"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+                <p class="mt-2 text-xs text-light-muted/50">{t.home.cards.browserMock.placeholder}</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="mb-8 sm:mb-12 text-center scroll-reveal">
+        <h2 class="heading-2 mb-3 sm:mb-4 text-light-text">
+          {t.home.skills.title}
+        </h2>
+        <p class="body-large text-light-muted">
+          <span class="gradient-text font-semibold">{t.home.skills.subtitle}</span>
+        </p>
+      </div>
+      <SkillsCommandCenter client:load projects={selectedProjects} initialLang={lang} />
+    </div>
+  </section>
+
+  <!-- Selected Work Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="mb-8 sm:mb-12 scroll-reveal">
+        <h2 class="heading-2 mb-3 sm:mb-4 text-light-text">{t.home.selectedWork.title}</h2>
+        <p class="body-large text-light-muted">{t.home.selectedWork.subtitle}</p>
+      </div>
+      <div class="space-y-4 sm:space-y-6">
+        {selectedProjects.map((project) => (
+          <a
+            href={project.href}
+            class="group card card-hover scroll-reveal block"
+            target={project.href.startsWith('http') ? '_blank' : undefined}
+            rel={project.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            <div class="flex flex-col gap-3 sm:gap-4 md:flex-row md:items-start">
+              <div class="flex-shrink-0">
+                <span class="text-5xl font-bold text-light-muted/20 sm:text-6xl md:text-8xl">
+                  {project.number}
+                </span>
+              </div>
+              <div class="flex-1 space-y-3 sm:space-y-4">
+                <div>
+                  <h3 class="heading-4 mb-2 text-light-text">
+                    {lang === 'tr' ? project.title : project.titleEn || project.title}
+                  </h3>
+                  <p class="body-base text-light-muted line-clamp-3">
+                    {lang === 'tr' ? project.description : project.descriptionEn || project.description}
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      class="rounded-full border border-white/10 bg-white/[0.05] px-2.5 sm:px-3 py-1 text-xs font-medium text-light-muted backdrop-blur-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div class="flex items-center gap-2 body-small font-medium text-accent-from transition-transform group-hover:translate-x-1">
+                  <span class="break-words">
+                    {project.href.startsWith('http') ? t.projects.viewOnGitHub : t.home.selectedWork.viewCaseStudy}
+                  </span>
+                  <svg
+                    class="h-4 w-4 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    {project.href.startsWith('http') ? (
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    ) : (
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    )}
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="mt-8 sm:mt-12 text-center scroll-reveal">
+        <a
+          href={`${prefix}/projects`}
+          class="btn-secondary inline-flex items-center justify-center gap-2"
+        >
+          {t.home.selectedWork.seeMore}
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script define:vars={{ pageLang: lang }}>
+  // Scroll reveal is handled by BaseLayout
+
+  // Toast state
+  let toastContainer: HTMLElement | null = null;
+  let currentToast: HTMLElement | null = null;
+
+  function showToast(message: string) {
+    if (!toastContainer) {
+      toastContainer = document.createElement('div');
+      toastContainer.id = 'toast-container';
+      toastContainer.className = 'fixed bottom-4 left-1/2 z-50 -translate-x-1/2';
+      document.body.appendChild(toastContainer);
+    }
+
+    // Remove existing toast
+    if (currentToast) {
+      currentToast.remove();
+    }
+
+    // Create new toast
+    const toast = document.createElement('div');
+    toast.className =
+      'rounded-full border border-white/10 bg-dark-surface px-6 py-3 text-sm font-medium text-light-text backdrop-blur-md transition-all opacity-0 translate-y-2';
+    toast.textContent = message;
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'polite');
+    toastContainer.appendChild(toast);
+    currentToast = toast;
+
+    // Animate in
+    requestAnimationFrame(() => {
+      toast.classList.remove('opacity-0', 'translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+    });
+
+    // Remove after duration
+    setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-2');
+      setTimeout(() => {
+        toast.remove();
+        currentToast = null;
+      }, 300);
+    }, 2000);
+  }
+
+  // Copy email to clipboard
+  const copyButton = document.getElementById('copy-email');
+  if (copyButton) {
+    const email = copyButton.getAttribute('data-email') || '';
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+        const copiedText = pageLang === 'en' ? 'Copied!' : 'Kopyalandı!';
+        showToast(copiedText);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        const failedText = pageLang === 'en' ? 'Failed to copy' : 'Kopyalama başarısız';
+        showToast(failedText);
+      }
+    });
+  }
+
+  // Timezone selection
+  const timezoneButtons = document.querySelectorAll('.timezone-btn');
+
+  timezoneButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const timezoneId = btn.getAttribute('data-timezone');
+      
+      // Remove active state from all buttons
+      timezoneButtons.forEach((b) => {
+        b.classList.remove('border-accent-from', 'bg-accent-from/20', 'shadow-lg', 'shadow-accent-from/20');
+        b.classList.add('border-white/10', 'bg-white/[0.05]');
+        b.setAttribute('aria-pressed', 'false');
+      });
+
+      // Add active state to clicked button
+      btn.classList.remove('border-white/10', 'bg-white/[0.05]');
+      btn.classList.add('border-accent-from', 'bg-accent-from/20', 'shadow-lg', 'shadow-accent-from/20');
+      btn.setAttribute('aria-pressed', 'true');
+
+      // Dispatch custom event for DotGlobe to update
+      const event = new CustomEvent('timezone-change', {
+        detail: { timezoneId },
+      });
+      document.dispatchEvent(event);
+    });
+  });
+
+  // Set initial active button (TR)
+  const initialBtn = document.querySelector('[data-timezone="tr"]') as HTMLElement;
+  if (initialBtn) {
+    initialBtn.classList.remove('border-white/10', 'bg-white/[0.05]');
+    initialBtn.classList.add('border-accent-from', 'bg-accent-from/20', 'shadow-lg', 'shadow-accent-from/20');
+    initialBtn.setAttribute('aria-pressed', 'true');
+  }
+</script>
+
+<style>
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+</style>
