@@ -120,10 +120,10 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
   };
 
   return (
-    <div className="card scroll-reveal">
-      <div className="grid gap-4 sm:gap-6 lg:grid-cols-12">
+    <div className="card scroll-reveal w-full min-w-0 max-w-full overflow-x-clip">
+      <div className="grid w-full min-w-0 gap-4 sm:gap-6 lg:grid-cols-12">
         {/* Left: areas */}
-        <div className="lg:col-span-3">
+        <div className="min-w-0 lg:col-span-3">
           <div className="hidden lg:block">
             <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-light-muted">{c.leftTitle}</div>
             <div className="space-y-2" role="listbox" aria-label={c.leftTitle}>
@@ -140,10 +140,10 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
             </div>
           </div>
 
-          {/* Mobile: scrollable chips */}
+          {/* Mobile: wrapping chips (avoids horizontal scroll overflow) */}
           <div className="lg:hidden">
             <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-light-muted">{c.leftTitle}</div>
-            <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1">
+            <div className="flex flex-wrap gap-2">
               {skillAreas.map((a) => (
                 <button
                   key={a.id}
@@ -151,7 +151,7 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
                   onClick={() => openDetail(a.id)}
                   aria-selected={selectedId === a.id}
                   className={[
-                    'shrink-0 rounded-full border px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold backdrop-blur-md transition-all min-h-[44px]',
+                    'rounded-full border px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold backdrop-blur-md transition-all min-h-[44px]',
                     selectedId === a.id
                       ? 'border-accent-from/40 bg-white/[0.08] text-light-text'
                       : 'border-white/10 bg-white/[0.05] text-light-muted hover:text-light-text',
@@ -165,16 +165,18 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
         </div>
 
         {/* Center: identity */}
-        <div className="lg:col-span-4">
-          <div className="rounded-[20px] sm:rounded-[24px] border border-white/10 bg-white/[0.03] p-4 sm:p-6">
+        <div className="min-w-0 lg:col-span-4">
+          <div className="min-w-0 max-w-full rounded-[20px] sm:rounded-[24px] border border-white/10 bg-white/[0.03] p-4 sm:p-6">
             <div className="text-xs font-semibold uppercase tracking-wide text-light-muted">{c.identityEyebrow}</div>
-            <h3 className="mt-2 sm:mt-3 text-xl sm:text-2xl font-bold leading-tight text-light-text">{c.identityTitle}</h3>
-            <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-light-muted">{c.identitySubtitle}</p>
+            <h3 className="mt-2 sm:mt-3 break-words text-xl sm:text-2xl font-bold leading-tight text-light-text">
+              {c.identityTitle}
+            </h3>
+            <p className="mt-2 sm:mt-3 break-words text-sm leading-relaxed text-light-muted">{c.identitySubtitle}</p>
 
             <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3">
               <a
                 href={`/${lang}/projects`}
-                className="inline-flex items-center justify-center rounded-[20px] sm:rounded-[24px] bg-gradient-to-r from-accent-from to-accent-to px-4 sm:px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-from focus:ring-offset-2 focus:ring-offset-dark-bg min-h-[44px]"
+                className="inline-flex w-full min-w-0 items-center justify-center rounded-[20px] sm:rounded-[24px] bg-gradient-to-r from-accent-from to-accent-to px-4 sm:px-5 py-2.5 text-sm font-semibold text-white transition-transform sm:hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-from focus:ring-offset-2 focus:ring-offset-dark-bg min-h-[44px] sm:w-auto"
               >
                 {c.primaryCta}
               </a>
@@ -183,7 +185,7 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
         </div>
 
         {/* Right: detail */}
-        <div className="lg:col-span-5 hidden lg:block">
+        <div className="hidden min-w-0 lg:col-span-5 lg:block">
           <SkillDetailPanel
             open={Boolean(resolvedArea)}
             area={resolvedArea}
@@ -250,11 +252,11 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
                         <a
                           key={p.href}
                           href={p.href}
-                          className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-light-text transition-all hover:border-accent-from/35 hover:bg-white/[0.05]"
+                          className="flex min-w-0 items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-light-text transition-all hover:border-accent-from/35 hover:bg-white/[0.05]"
                           target={p.href.startsWith('http') ? '_blank' : undefined}
                           rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         >
-                          <span className="font-medium">{p.name}</span>
+                          <span className="min-w-0 flex-1 break-words font-medium">{p.name}</span>
                           <svg className="h-4 w-4 text-accent-from" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                           </svg>

@@ -78,9 +78,9 @@ export default function AboutSkills({ lang, projects }: AboutSkillsProps) {
       {/* A) CORE SKILLS */}
       <div className="mb-12 scroll-reveal">
         <h2 className="mb-6 text-3xl font-bold text-light-text sm:text-4xl">{H('core')}</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {c.coreCards.map((card) => (
-            <div key={card.id} className="card card-hover">
+            <div key={card.id} className="card card-hover min-w-0">
               <div className="mb-4 flex items-center gap-3">
                 <span className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04]">
                   <Icon name={card.icon} />
@@ -101,8 +101,8 @@ export default function AboutSkills({ lang, projects }: AboutSkillsProps) {
       {/* B) WHAT I DELIVER */}
       <div className="mb-12 scroll-reveal">
         <h2 className="mb-6 text-3xl font-bold text-light-text sm:text-4xl">{H('deliver')}</h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="card">
+        <div className="grid w-full min-w-0 gap-6 md:grid-cols-2">
+          <div className="card min-w-0">
             <ul className="space-y-3" role="list">
               {c.deliverLeft[lang].map((item) => (
                 <li key={item} className="flex items-start gap-3">
@@ -112,7 +112,7 @@ export default function AboutSkills({ lang, projects }: AboutSkillsProps) {
               ))}
             </ul>
           </div>
-          <div className="card">
+          <div className="card min-w-0">
             <div className="text-xs font-semibold uppercase tracking-wide text-light-muted">
               {lang === 'tr' ? 'How I work' : 'How I work'}
             </div>
@@ -131,12 +131,12 @@ export default function AboutSkills({ lang, projects }: AboutSkillsProps) {
       {/* C) PROOF / HIGHLIGHTS */}
       <div className="scroll-reveal">
         <h2 className="mb-6 text-3xl font-bold text-light-text sm:text-4xl">{H('selectedWork')}</h2>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid w-full min-w-0 gap-4 md:grid-cols-3">
           {previews.map((p) => (
             <a
               key={p.title}
               href={`${base}/projects`}
-              className="card card-hover block"
+              className="card card-hover block min-w-0"
               aria-label={`${c.proof.viewProject[lang]}: ${p.title}`}
             >
               <h3 className="text-lg font-semibold text-light-text">{p.title}</h3>
@@ -156,9 +156,9 @@ export default function AboutSkills({ lang, projects }: AboutSkillsProps) {
           ))}
         </div>
 
-        <div className="mt-8 card border-accent-from/20 bg-gradient-to-br from-white/[0.03] to-white/[0.01]">
+        <div className="mt-8 card min-w-0 border-accent-from/20 bg-gradient-to-br from-white/[0.03] to-white/[0.01]">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-            <p className="text-base leading-relaxed text-light-muted">{c.proof.ctaBar.text[lang]}</p>
+            <p className="min-w-0 flex-1 text-base leading-relaxed text-light-muted">{c.proof.ctaBar.text[lang]}</p>
             <div className="flex flex-wrap gap-3">
               <a
                 href={`${base}/contact`}

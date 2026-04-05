@@ -115,7 +115,7 @@ const prefix = `/${lang}`;
   <!-- Card Grid Section -->
   <section class="section-padding">
     <div class="container-custom">
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
+      <div class="grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
         <!-- Card 1: Collaboration -->
         <Card span="eight" class="relative overflow-hidden">
           <div class="relative z-10 flex flex-col gap-4 sm:gap-6 md:flex-row md:items-center">
@@ -135,7 +135,7 @@ const prefix = `/${lang}`;
                 <div class="absolute inset-0 -z-10 rounded-full border border-white/5" style="transform: scale(1.75);" />
               </div>
             </div>
-            <div class="flex-1">
+            <div class="min-w-0 flex-1">
               <h3 class="heading-4 mb-2 sm:mb-3 text-light-text">{t.home.cards.collaboration.title}</h3>
               <p class="body-base text-light-muted">
                 {t.home.cards.collaboration.description}

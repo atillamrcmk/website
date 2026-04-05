@@ -391,10 +391,10 @@ export default function DotGlobe({
             {/* Popover */}
             {popoverOpen && (
               <div
-                className="absolute left-1/2 bottom-full mb-3 -translate-x-1/2 whitespace-nowrap rounded-lg border border-white/10 px-4 py-3 text-sm shadow-xl backdrop-blur-md"
+                className="absolute left-1/2 bottom-full z-20 mb-3 max-w-[min(100vw-2rem,280px)] -translate-x-1/2 whitespace-normal rounded-lg border border-white/10 px-4 py-3 text-center text-sm shadow-xl backdrop-blur-md sm:whitespace-nowrap sm:text-left"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.04)",
-                  minWidth: 200,
+                  minWidth: "min(200px, 100%)",
                 }}
                 onClick={(e) => e.stopPropagation()}
               >

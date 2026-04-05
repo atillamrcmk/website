@@ -75,10 +75,10 @@ export default function RecipeModal({ open, onClose, title, subtitle, closeLabel
         <div className="pointer-events-auto w-full max-w-3xl rounded-[24px] border border-white/10 bg-dark-bg/90 shadow-2xl shadow-black/40 backdrop-blur-md">
           <div className="flex items-start justify-between gap-4 border-b border-white/10 p-6">
             <div className="min-w-0">
-              <h2 id={headingId} className="text-2xl font-bold text-light-text sm:text-3xl">
+              <h2 id={headingId} className="break-words text-2xl font-bold text-light-text sm:text-3xl">
                 <span className="gradient-text">{title}</span>
               </h2>
-              <p id={descId} className="mt-2 text-sm leading-relaxed text-light-muted">
+              <p id={descId} className="mt-2 break-words text-sm leading-relaxed text-light-muted">
                 {subtitle}
               </p>
             </div>

@@ -55,8 +55,8 @@ export default function SkillDetailPanel({ open, area, lang, labels, onClose, pa
         <p className="mt-4 text-sm leading-relaxed text-light-muted">{labels.hint}</p>
       ) : (
         <div className="mt-4">
-          <h3 className="text-xl font-semibold text-light-text">{area.label[lang]}</h3>
-          <p className="mt-3 text-sm leading-relaxed text-light-muted">{area.description[lang]}</p>
+          <h3 className="break-words text-xl font-semibold text-light-text">{area.label[lang]}</h3>
+          <p className="mt-3 break-words text-sm leading-relaxed text-light-muted">{area.description[lang]}</p>
 
           <div className="mt-5">
             <div className="text-xs font-semibold uppercase tracking-wide text-light-muted">{labels.tech}</div>
@@ -76,11 +76,11 @@ export default function SkillDetailPanel({ open, area, lang, labels, onClose, pa
                   <li key={p.href}>
                     <a
                       href={p.href}
-                      className="group inline-flex w-full items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-light-text transition-all hover:border-accent-from/35 hover:bg-white/[0.05] focus:outline-none focus:ring-2 focus:ring-accent-from/60 focus:ring-offset-2 focus:ring-offset-dark-bg"
+                      className="group inline-flex w-full min-w-0 items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-light-text transition-all hover:border-accent-from/35 hover:bg-white/[0.05] focus:outline-none focus:ring-2 focus:ring-accent-from/60 focus:ring-offset-2 focus:ring-offset-dark-bg"
                       target={p.href.startsWith('http') ? '_blank' : undefined}
                       rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
-                      <span className="font-medium">{p.name}</span>
+                      <span className="min-w-0 flex-1 break-words font-medium">{p.name}</span>
                       <span className="ml-3 grid h-8 w-8 place-items-center rounded-xl border border-white/10 bg-white/[0.03] transition-all group-hover:border-accent-from/30 group-hover:bg-accent-from/10" aria-hidden="true">
                         <svg className="h-4 w-4 text-accent-from" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />

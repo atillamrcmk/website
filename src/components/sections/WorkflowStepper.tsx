@@ -38,11 +38,11 @@ export default function WorkflowStepper({ title, steps, activeLabel }: WorkflowS
           </h2>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-12">
+        <div className="grid w-full min-w-0 gap-6 lg:grid-cols-12">
           {/* Steps */}
-          <div className="lg:col-span-5">
-            {/* Mobile: horizontal scroll */}
-            <div className="mb-4 flex gap-2 overflow-x-auto pb-2 lg:hidden" role="list">
+          <div className="min-w-0 lg:col-span-5">
+            {/* Mobile: wrap chips (avoids horizontal overflow) */}
+            <div className="mb-4 flex flex-wrap gap-2 lg:hidden" role="list">
               {safeSteps.map((step, idx) => {
                 const isActive = step.id === active?.id;
                 return (
@@ -51,13 +51,13 @@ export default function WorkflowStepper({ title, steps, activeLabel }: WorkflowS
                     type="button"
                     onClick={() => setActiveId(step.id)}
                     className={[
-                      'shrink-0 rounded-full border px-4 py-2 text-left text-sm backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-accent-from/60 focus:ring-offset-2 focus:ring-offset-dark-bg',
+                      'max-w-full rounded-full border px-4 py-2 text-left text-sm backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-accent-from/60 focus:ring-offset-2 focus:ring-offset-dark-bg',
                       isActive ? 'border-accent-from/40 bg-white/[0.08] text-light-text' : 'border-white/10 bg-white/[0.05] text-light-muted hover:text-light-text',
                     ].join(' ')}
                     aria-pressed={isActive}
                   >
                     <span className="mr-2 text-xs text-light-muted">{String(idx + 1).padStart(2, '0')}</span>
-                    <span className="font-semibold">{step.title}</span>
+                    <span className="font-semibold break-words">{step.title}</span>
                   </button>
                 );
               })}
@@ -107,15 +107,15 @@ export default function WorkflowStepper({ title, steps, activeLabel }: WorkflowS
           </div>
 
           {/* Details */}
-          <div className="lg:col-span-7">
-            <div className="card scroll-reveal p-6">
+          <div className="min-w-0 lg:col-span-7">
+            <div className="card scroll-reveal min-w-0 max-w-full overflow-x-clip p-6">
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
                   <div className="text-xs font-semibold uppercase tracking-wide text-light-muted">
                     {activeLabel}
                   </div>
-                  <h3 className="mt-2 text-xl font-semibold text-light-text">{active?.title}</h3>
-                  <p className="mt-3 text-base leading-relaxed text-light-muted">{active?.description}</p>
+                  <h3 className="mt-2 break-words text-xl font-semibold text-light-text">{active?.title}</h3>
+                  <p className="mt-3 break-words text-base leading-relaxed text-light-muted">{active?.description}</p>
                 </div>
               </div>
 
