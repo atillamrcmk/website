@@ -16,6 +16,8 @@ NC='\033[0m' # No Color
 # Configuration
 SITE_DIR="/var/www/atillamercimek"
 REPO_DIR="$SITE_DIR/repo"
+# Built site is copied here. Nginx `root` MUST be this path (not SITE_DIR alone),
+# otherwise /gizlilik-politikasi/ etc. hit wrong or empty dirs → 403 Forbidden.
 BUILD_DIR="$SITE_DIR/build"
 BACKUP_DIR="$SITE_DIR/backup"
 SITE_DOMAIN="atillamercimek.com"
@@ -87,6 +89,9 @@ sudo nginx -t && sudo systemctl reload nginx || {
 # Success
 echo "================================================"
 echo -e "${GREEN}✅ Deployment completed successfully!${NC}"
+echo -e "${YELLOW}📌 Nginx: set root to exactly:${NC}"
+echo -e "   ${BUILD_DIR}"
+echo -e "${YELLOW}   Example: root $BUILD_DIR;${NC}"
 echo -e "${GREEN}🌐 Site: https://$SITE_DOMAIN${NC}"
 echo -e "${GREEN}📅 Deployed at: $(date)${NC}"
 echo "================================================"

@@ -17,7 +17,8 @@ export default defineConfig({
     }),
     react(),
   ],
-  site: 'https://atilla.dev', // Update this with your actual domain
+  // Canonical URLs, redirects, OG — must match production hostname
+  site: 'https://atillamercimek.com',
   markdown: {
     shikiConfig: {
       theme: 'github-dark',

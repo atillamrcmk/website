@@ -1,3 +1,21 @@
 ---
-return Astro.redirect('/tr/', 302);
+import { withLocale } from '../i18n/routing';
+const trPath = withLocale('tr', '/');
+const trUrl = Astro.site ? new URL(trPath, Astro.site).href : trPath;
 ---
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0;url=${trPath}`} />
+    <link rel="canonical" href={trUrl} />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <p>
+      <a href={trPath}>Continue to site</a>
+    </p>
+  </body>
+</html>
