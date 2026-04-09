@@ -213,11 +213,11 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
             onClick={closeDetail}
             aria-label={c.close}
           />
-          <div className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[24px] border border-white/10 bg-dark-bg/95 p-4 sm:p-5 backdrop-blur-md">
+          <div className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto overflow-x-hidden rounded-t-[24px] border border-white/10 bg-dark-bg/95 p-4 sm:p-5 backdrop-blur-md">
             <div className="mb-3 sm:mb-4 flex items-start justify-between gap-3 sm:gap-4">
               <div className="min-w-0 flex-1">
                 <div className="text-xs font-semibold uppercase tracking-wide text-light-muted">{c.sheetTitle}</div>
-                <div className="mt-2 text-lg sm:text-xl font-semibold leading-tight text-light-text">{resolvedArea?.label[lang]}</div>
+                <div className="mt-2 break-words text-lg sm:text-xl font-semibold leading-tight text-light-text">{resolvedArea?.label[lang]}</div>
               </div>
               <button
                 type="button"
@@ -233,7 +233,7 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
 
             {resolvedArea ? (
               <div>
-                <p className="text-sm leading-relaxed text-light-muted">{resolvedArea.description[lang]}</p>
+                <p className="break-words text-sm leading-relaxed text-light-muted">{resolvedArea.description[lang]}</p>
                 <div className="mt-4">
                   <div className="text-xs font-semibold uppercase tracking-wide text-light-muted">{c.tech}</div>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -256,8 +256,8 @@ export default function SkillsCommandCenter({ projects, initialLang = 'tr' }: Sk
                           target={p.href.startsWith('http') ? '_blank' : undefined}
                           rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         >
-                          <span className="min-w-0 flex-1 break-words font-medium">{p.name}</span>
-                          <svg className="h-4 w-4 text-accent-from" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <span className="min-w-0 flex-1 break-all font-medium">{p.name}</span>
+                          <svg className="h-4 w-4 flex-shrink-0 text-accent-from" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                           </svg>
                         </a>

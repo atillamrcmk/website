@@ -80,7 +80,7 @@ export default function SkillDetailPanel({ open, area, lang, labels, onClose, pa
                       target={p.href.startsWith('http') ? '_blank' : undefined}
                       rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
-                      <span className="min-w-0 flex-1 break-words font-medium">{p.name}</span>
+                      <span className="min-w-0 flex-1 break-all font-medium">{p.name}</span>
                       <span className="ml-3 grid h-8 w-8 place-items-center rounded-xl border border-white/10 bg-white/[0.03] transition-all group-hover:border-accent-from/30 group-hover:bg-accent-from/10" aria-hidden="true">
                         <svg className="h-4 w-4 text-accent-from" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
